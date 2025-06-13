@@ -1,1 +1,93 @@
 
+body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    background-color: #F1F1F1;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    padding: 20px;
+    border-bottom: 4px solid #FE88AD;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container img {
+    height: 40px;
+}
+
+.logo-container h1 {
+    margin: 0;
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+}
+
+footer {
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+main {
+    padding: 40px;
+    margin-bottom: 80px;
+}
+
+.criteria-section {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.criterion label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #FC3A79;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider {
+    flex-grow: 1;
+    accent-color: #FC3A79;
+}
+
+.number-input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    text-align: center;
+    background-color: #ffe8ef;
+    color: #FC3A79;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Горизонтальная линия с градиентом (HR) */
+.gradient-hr {
+    border: 0;
+    height: 4px;
+    background: linear-gradient(to right, #8900FF, #FD417E, #E7B091);
+    border-radius: 999px;
+    margin-top: 40px;
+}
