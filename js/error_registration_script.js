@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullnameInput = document.getElementById("fullname");
     const fullnameError = document.getElementById("fullname-error");
 
+    const telegramInput = document.getElementById("telegram");
+    const telegramError = document.getElementById("telegram-error");
+
     // === Проверка ФИО ===
     fullnameInput.addEventListener("input", function () {
         let value = fullnameInput.value;
@@ -74,6 +77,61 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // === Проверка Telegram (необязательное поле) ===
+    telegramInput.addEventListener("input", function () {
+        const value = telegramInput.value.trim();
+
+        // Если поле пустое — ошибки нет, форма валидна
+        if (value === "") {
+            telegramError.textContent = "";
+            telegramError.style.display = "none";
+            telegramInput.classList.remove("input-error");
+            return;
+        }
+
+        // Проверим, начинается ли с '@'
+        if (!value.startsWith("@")) {
+            telegramError.textContent = "Никнейм Telegram должен начинаться с символа @";
+            telegramError.style.display = "block";
+            telegramInput.classList.add("input-error");
+            return;
+        }
+
+        // Уберем '@' для валидации остального ника
+        const username = value.slice(1);
+
+        // Проверка длины: минимум 5 символов, максимум 32
+        if (username.length < 5) {
+            telegramError.textContent = "Никнейм должен содержать минимум 5 символов после @";
+            telegramError.style.display = "block";
+            telegramInput.classList.add("input-error");
+            return;
+        }
+        if (username.length > 32) {
+            telegramError.textContent = "Никнейм не должен превышать 32 символа после @";
+            telegramError.style.display = "block";
+            telegramInput.classList.add("input-error");
+            return;
+        }
+
+        // Проверка на недопустимые символы:
+        // Допустимы: A-Z, a-z, 0-9, _
+        // Запрещены пробелы, спецсимволы, дополнительные '@' и Unicode символы
+        const usernameRegex = /^[A-Za-z0-9_]+$/;
+
+        if (!usernameRegex.test(username)) {
+            telegramError.textContent = "Никнейм может содержать только буквы латинского алфавита, цифры и символ подчёркивания (_)";
+            telegramError.style.display = "block";
+            telegramInput.classList.add("input-error");
+            return;
+        }
+
+        // Все проверки пройдены
+        telegramError.textContent = "";
+        telegramError.style.display = "none";
+        telegramInput.classList.remove("input-error");
+    });
+
     // === Общая проверка перед отправкой формы ===
     document.getElementById("registration-form").addEventListener("submit", function(event) {
         // Поля, обязательные для проверки
@@ -97,9 +155,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+        // Проверяем ошибки в Telegram (если заполнено)
+        if (telegramInput.value.trim() !== "" && telegramInput.classList.contains("input-error")) {
+            hasError = true;
+        }
+
         if (hasError) {
             event.preventDefault();
-            alert("Пожалуйста, корректно заполните все обязательные поля.");
+            alert("Пожалуйста, корректно заполните все обязательные поля!");
         }
     });
 });
