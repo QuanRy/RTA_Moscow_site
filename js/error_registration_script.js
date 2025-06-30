@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const emailInput = document.getElementById("email");
-    const emailError = document.getElementById("email-error");
+    const emailInput = document.getElementById("login_email");
+    const emailError = document.getElementById("login_email-error");
 
     const passwordInput = document.getElementById("password");
     const passwordError = document.getElementById("password-error");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // === Проверка email ===
+    // === Проверка login_email ===
     emailInput.addEventListener("input", function () {
         const email = emailInput.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // === Общая проверка перед отправкой формы ===
     document.getElementById("registration-form").addEventListener("submit", function(event) {
         // Поля, обязательные для проверки
-        const requiredFields = ["fullname", "email", "password"];
+        const requiredFields = ["fullname", "login_email", "password"];
         let hasError = false;
 
         requiredFields.forEach(id => {
