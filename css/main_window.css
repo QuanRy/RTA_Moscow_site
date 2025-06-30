@@ -44,8 +44,6 @@ footer {
     font-weight: 600;
 }
 
-
-
 .criteria-section {
     max-width: 600px;
     margin: 100px auto;
@@ -110,4 +108,54 @@ footer {
     background: linear-gradient(to right, #8900FF, #FD417E, #E7B091);
     border-radius: 999px;
     margin-top: 40px;
+}
+
+/* Изменения хэдер, добавление кнопок */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-button {
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 2px solid #ad00c9;
+    background: linear-gradient(to left, #fc427e, #ff0053);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.auth-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 999px;
+    border: 2px solid #ad00c9;
+    background: linear-gradient(to left, #fc407d, #b15372);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.auth-button:hover::before {
+    opacity: 1;
+}
+
+.auth-button:hover {
+    background: white;
+    color: #ffffff;
 }

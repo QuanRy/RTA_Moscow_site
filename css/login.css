@@ -36,8 +36,9 @@
 }
 
 .login-container button {
-    margin-top: 10px;
-    padding: 12px;
+    width: 180px;           
+    align-self: center;    
+    padding: 12px 0;        
     background: linear-gradient(to right, #FC3A79, #FE88AD);
     color: white;
     font-weight: 600;
