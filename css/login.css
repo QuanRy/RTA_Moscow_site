@@ -1,0 +1,90 @@
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(252, 58, 121, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.login-container h2 {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+    color: #FC3A79;
+    font-weight: 600;
+}
+
+.login-container label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background-color: #ffe8ef;
+    font-size: 14px;
+    color: #FC3A79;
+    font-family: 'Manrope', sans-serif;
+}
+
+.login-container button {
+    margin-top: 10px;
+    padding: 12px;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+    background: linear-gradient(to right, #fe5b93, #fda3bd);
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.form-row label {
+    width: 70px;         /* выравниваем двоеточие друг над другом*/
+    text-align: right;
+    font-weight: 500;
+    color: #fc3a8a;
+    font-family: 'Manrope', sans-serif;
+    white-space: nowrap;
+}
+
+.form-row input[type="text"],
+.form-row input[type="password"] {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background-color: #ffe8ef;
+    font-size: 14px;
+    color: #FC3A79;
+    font-family: 'Manrope', sans-serif;
+    box-sizing: border-box;
+}
