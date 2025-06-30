@@ -1,0 +1,113 @@
+.registration-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(252, 58, 121, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.registration-container h2 {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+    color: #FC3A79;
+    font-weight: 600;
+}
+
+.registration-container label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="password"],
+.registration-container input[type="tel"],
+.registration-container input[type="email"],
+.registration-container select {
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background-color: #ffe8ef;
+    font-size: 14px;
+    color: #FC3A79;
+    font-family: 'Manrope', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.registration-container select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23FC3A79' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+}
+
+.registration-container button {
+    margin-top: 10px;
+    padding: 12px;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: background 0.3s;
+}
+
+.registration-container button:hover {
+    background: linear-gradient(to right, #fe5b93, #fda3bd);
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.form-row label {
+    width: 100px;
+    text-align: right;
+    font-weight: 500;
+    color: #fc3a8a;
+    font-family: 'Manrope', sans-serif;
+    white-space: nowrap;
+}
+
+.input-error {
+    border: 2px solid #fc3a79 !important;
+    background-color: #ffe8ef !important;
+    animation: shake 0.2s ease-in-out 2;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0px); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0px); }
+}
+
+.contact-block {
+    background-color: #f1f1f1;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.contact-block h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fc3a79;
+    font-family: 'Manrope', sans-serif;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация — RTA</title>
+    <link rel="stylesheet" href="../css/main_window.css">
+    <link rel="stylesheet" href="../css/registration_only_admin.css">
+    <link rel="icon" type="image/svg+xml" href="../img/logo_without_text.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="../img/logo.svg" alt="Логотип RTA">
+        <h1>RTA — Регистрация администратора</h1>
+    </div>
+</header>
+
+<main>
+    <div class="registration-container">
+        <h2>Регистрация</h2>
+        <form id="registration-form">
+            <div class="form-row">
+                <label for="fullname">ФИО:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-row">
+                <label for="username">Логин:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-row">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-row">
+                <label for="role">Роль:</label>
+                <select id="role" name="role">
+                    <option value="сотрудник" selected>Сотрудник</option>
+                    <option value="администратор">Администратор</option>
+                </select>
+            </div>
+
+            <div class="contact-block">
+                <h3>Контактные данные (необязательно)</h3>
+                <div class="form-row">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" pattern="^\+7\d{10}$" placeholder="+79091234567">
+                </div>
+                <div class="form-row">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-row">
+                    <label for="telegram">Telegram:</label>
+                    <input type="text" id="telegram" name="telegram" placeholder="@username">
+                </div>
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 RTA Москва</p>
+</footer>
+
+<script>
+document.getElementById("registration-form").addEventListener("submit", function(event) {
+    const requiredFields = ["fullname", "username", "password"];
+    let hasError = false;
+
+    requiredFields.forEach(id => {
+        const field = document.getElementById(id);
+        if (!field.value.trim()) {
+            field.classList.add("input-error");
+            hasError = true;
+        } else {
+            field.classList.remove("input-error");
+        }
+    });
+
+    if (hasError) {
+        event.preventDefault();
+        alert("Пожалуйста, заполните все обязательные поля.");
+    }
+});
+</script>
+</body>
+</html>
