@@ -15,8 +15,8 @@
                 <h1>RTA — Расчет частоты по Остроу</h1>
             </div>
             <div class="auth-buttons">
-                <button class="auth-button">Регистрация</button>
-                <button class="auth-button">Войти</button>
+                <button class="auth-button registration">Регистрация</button>
+                <button class="auth-button login">Войти</button>
             </div>
         </div>
     </header>
@@ -88,21 +88,8 @@
         <p>© RTA Москва, 2025</p>
     </footer>
 
-    <script>
-        for (let i = 1; i <= 5; i++) {
-            const slider = document.getElementById(`slider${i}`);
-            const input = document.getElementById(`value${i}`);
+    <script src="../js/header_enter_pages_script.js"></script>
+    <script src="../js/main_scroll_interaction.js"></script>
 
-            slider.addEventListener("input", () => {
-                input.value = slider.value;
-            });
-
-            input.addEventListener("input", () => {
-                if (input.value >= -5 && input.value <= 5) {
-                    slider.value = input.value;
-                }
-            });
-        }
-    </script>
 </body>
 </html>
