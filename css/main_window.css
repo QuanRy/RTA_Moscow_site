@@ -57,7 +57,7 @@ footer {
     font-weight: 600;
     margin-bottom: 5px;
     display: block;
-    color: #FC3A79;
+    color: #100f0d;
 }
 
 .slider-container {
@@ -100,15 +100,6 @@ footer {
     font-size: 14px;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Горизонтальная линия с градиентом */
-.gradient-hr {
-    border: 0;
-    height: 4px;
-    background: linear-gradient(to right, #8900FF, #FD417E, #E7B091);
-    border-radius: 999px;
-    margin-top: 40px;
 }
 
 /* Изменения хэдер, добавление кнопок */
@@ -159,4 +150,29 @@ footer {
 .auth-button:hover {
     background: white;
     color: #ffffff;
+}
+
+.criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.criteria-block {
+    background-color: #eaeaea;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.criteria-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-family: 'Manrope', sans-serif;
+    color: #100f0d;
 }

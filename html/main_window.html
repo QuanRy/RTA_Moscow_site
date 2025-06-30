@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="../img/logo_without_text.svg">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -22,65 +23,84 @@
     </header>
 
     <main>
-        <section class="criteria-section">
-            <!-- Критерии с делениями -->
-            <div class="criterion">
-                <label for="slider1">Критерий 1</label>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+        <!-- Грид из 3 блоков -->
+        <section class="criteria-grid">
+
+            <!-- Блок 1 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Рынок</div>
+                <div class="criterion">
+                    <label for="slider1">Критерий 1</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider1">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value1">
                     </div>
-                    <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider1">
-                    <input type="number" min="-5" max="5" value="0" class="number-input" id="value1">
+                </div>
+                <div class="criterion">
+                    <label for="slider2">Критерий 2</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider2">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value2">
+                    </div>
                 </div>
             </div>
 
-            <!-- Повторяется для каждого критерия -->
-            <div class="criterion">
-                <label for="slider2">Критерий 2</label>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <!-- Блок 2 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Креатив</div>
+                <div class="criterion">
+                    <label for="slider3">Критерий 3</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider3">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value3">
                     </div>
-                    <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider2">
-                    <input type="number" min="-5" max="5" value="0" class="number-input" id="value2">
+                </div>
+                <div class="criterion">
+                    <label for="slider4">Критерий 4</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider4">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value4">
+                    </div>
                 </div>
             </div>
 
-            <div class="criterion">
-                <label for="slider3">Критерий 3</label>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <!-- Блок 3 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Медиа</div>
+                <div class="criterion">
+                    <label for="slider5">Критерий 5</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider5">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value5">
                     </div>
-                    <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider3">
-                    <input type="number" min="-5" max="5" value="0" class="number-input" id="value3">
+                </div>
+                <div class="criterion">
+                    <label for="slider4">Критерий 6</label>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        </div>
+                        <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider4">
+                        <input type="number" min="-5" max="5" value="0" class="number-input" id="value4">
+                    </div>
                 </div>
             </div>
 
-            <div class="criterion">
-                <label for="slider4">Критерий 4</label>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                    </div>
-                    <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider4">
-                    <input type="number" min="-5" max="5" value="0" class="number-input" id="value4">
-                </div>
-            </div>
-
-            <div class="criterion">
-                <label for="slider5">Критерий 5</label>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                    </div>
-                    <input type="range" min="-5" max="5" value="0" step="1" class="slider" id="slider5">
-                    <input type="number" min="-5" max="5" value="0" class="number-input" id="value5">
-                </div>
-            </div>
-
-            <hr class="gradient-hr">
         </section>
     </main>
 
@@ -90,6 +110,5 @@
 
     <script src="../js/header_enter_pages_script.js"></script>
     <script src="../js/main_scroll_interaction.js"></script>
-
 </body>
 </html>
