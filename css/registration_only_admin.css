@@ -120,3 +120,12 @@
     color: #fc3a79;
     font-family: 'Manrope', sans-serif;
 }
+
+.error-message {
+    color: #fc3a79;
+    font-size: 13px;
+    margin: -10px 0 10px 100px;
+    display: none;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+}

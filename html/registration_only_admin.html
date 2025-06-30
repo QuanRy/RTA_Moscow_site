@@ -9,84 +9,79 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    <div class="logo-container">
-        <img src="../img/logo.svg" alt="Логотип RTA">
-        <h1>RTA — Регистрация администратора</h1>
-    </div>
-</header>
+    <header>
+        <div class="logo-container">
+            <img src="../img/logo.svg" alt="Логотип RTA">
+            <h1>RTA — Регистрация администратора</h1>
+        </div>
+    </header>
 
-<main>
-    <div class="registration-container">
-        <h2>Регистрация</h2>
-        <form id="registration-form">
-            <div class="form-row">
-                <label for="fullname">ФИО:</label>
-                <input type="text" id="fullname" name="fullname" required>
-            </div>
-            <div class="form-row">
-                <label for="username">Логин:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-row">
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-row">
-                <label for="role">Роль:</label>
-                <select id="role" name="role">
-                    <option value="сотрудник" selected>Сотрудник</option>
-                    <option value="администратор">Администратор</option>
-                </select>
-            </div>
+    <main>
+        <div class="registration-container">
 
-            <div class="contact-block">
-                <h3>Контактные данные (необязательно)</h3>
+            <h2>Регистрация</h2>
+
+            <form id="registration-form">
+
                 <div class="form-row">
-                    <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" name="phone" pattern="^\+7\d{10}$" placeholder="+79091234567">
+                    <label for="fullname">ФИО:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Введите ваше имя" />
                 </div>
+                <span class="error-message" id="fullname-error"></span>
+
                 <div class="form-row">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                    <label for="email">Логин:</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" />
                 </div>
+                <span class="error-message" id="email-error"></span>
+
                 <div class="form-row">
-                    <label for="telegram">Telegram:</label>
-                    <input type="text" id="telegram" name="telegram" placeholder="@username">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
-            </div>
+                <span class="error-message" id="password-error"></span>
 
-            <div class="button-wrapper">
-                <button type="submit">Зарегистрироваться</button>
-            </div>
-        </form>
-    </div>
-</main>
+                <div class="form-row">
+                    <label for="role">Роль:</label>
+                    <select id="role" name="role">
+                        <option value="сотрудник" selected>Сотрудник</option>
+                        <option value="администратор">Администратор</option>
+                    </select>
+                </div>
 
-<footer>
-    <p>© 2025 RTA Москва</p>
-</footer>
 
-<script>
-document.getElementById("registration-form").addEventListener("submit", function(event) {
-    const requiredFields = ["fullname", "username", "password"];
-    let hasError = false;
+                <div class="contact-block">
 
-    requiredFields.forEach(id => {
-        const field = document.getElementById(id);
-        if (!field.value.trim()) {
-            field.classList.add("input-error");
-            hasError = true;
-        } else {
-            field.classList.remove("input-error");
-        }
-    });
+                    <h3>Контактные данные (необязательно)</h3>
 
-    if (hasError) {
-        event.preventDefault();
-        alert("Пожалуйста, заполните все обязательные поля.");
-    }
-});
-</script>
+                    <div class="form-row">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" name="phone" pattern="^\+7\d{10}$" placeholder="+79091234567">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="telegram">Telegram:</label>
+                        <input type="text" id="telegram" name="telegram" placeholder="@username">
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button type="submit">Зарегистрироваться</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 RTA Москва</p>
+    </footer>
+
+    <script src="../js/error_registration_script.js"></script>
+
 </body>
 </html>
