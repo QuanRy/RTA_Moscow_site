@@ -8,8 +8,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullnameInput = document.getElementById("fullname");
     const fullnameError = document.getElementById("fullname-error");
 
+    const phoneInput = document.getElementById("phone");
+    const emailContactInput = document.getElementById("contact_email");
+
     const telegramInput = document.getElementById("telegram");
     const telegramError = document.getElementById("telegram-error");
+
+    // === Ограничение длины ввода ===
+    function restrictInputLength(event, maxLength) {
+        const input = event.target;
+        // Разрешаем управляющие клавиши (Backspace, Delete, стрелки)
+        const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"];
+        if (input.value.length >= maxLength && !allowedKeys.includes(event.key)) {
+            event.preventDefault();
+        }
+    }
+
+    fullnameInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 100);
+    });
+
+    emailInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 254);
+    });
+
+    emailContactInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 254);
+    });
+
+    phoneInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 12);
+    });
+
+    passwordInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 64);
+    });
+
+    telegramInput.addEventListener("keydown", function(event) {
+        restrictInputLength(event, 33);
+    });
 
     // === Проверка ФИО ===
     fullnameInput.addEventListener("input", function () {
@@ -46,6 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
             emailInput.classList.add("input-error");
         } else if (!emailRegex.test(email)) {
             emailError.textContent = "Введите корректный email (example@mail.com)";
+            emailError.style.display = "block";
+            emailInput.classList.add("input-error");
+        } else if (email.length < 6) {
+            emailError.textContent = "Email должен быть минимум 6 символов";
             emailError.style.display = "block";
             emailInput.classList.add("input-error");
         } else {
