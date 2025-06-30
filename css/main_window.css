@@ -178,11 +178,66 @@ footer {
     color: #100f0d;
 }
 
-/* деление критериев  */
+
+
+/* ======== деление критериев ======== */
 .factor-labels {
     display: flex;
     justify-content: space-between;
     font-size: 0.9em;
     color: #e91e63;
     margin-top: -5px;
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto 20px auto; /* сверху 40px, снизу 20px */
+}
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: #f7f7f7;
+    border: 2px solid #fc3a79;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #999999; /* светлый цвет шрифта для плейсхолдера */
+
+    min-width: 180px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-select option {
+    color: #100f0d; /* Цвет текста для опций */
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #fc3a79;
+    color: #333;
+}
+
+.custom-select option[disabled] {
+    color: #999999; /* цвет плейсхолдера */
+}
+
+/* Большой дефис между селектами */
+.select-separator {
+    font-size: 40px;
+    font-weight: 700;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    line-height: 1;
 }

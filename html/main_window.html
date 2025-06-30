@@ -23,6 +23,31 @@
     </header>
 
     <main>
+        <!-- Контейнер с двумя выпадающими списками -->
+        <div class="select-container">
+            <select class="custom-select" id="company-select" aria-label="Компания">
+                <option value="" disabled selected hidden>Компания</option>
+                <option>4 лапы</option>
+                <option>Атол</option>
+                <option>Авторусь</option>
+                <option>Билайн</option>
+                <option>Финам Умскул</option>
+            </select>
+
+            <div class="select-separator">—</div>
+
+            <select class="custom-select" id="segment-select" aria-label="Сегмент">
+                <option value="" disabled selected hidden>Сегмент</option>
+                <option>Школьники</option>
+                <option>Учащиеся СПО и студенты</option>
+                <option>Работающая молодежь</option>
+                <option>Родители школьников</option>
+                <option>Пожилые</option>
+                <option>Госслужщие</option>
+            </select>
+        </div>
+
+
         <!-- Грид из 3 блоков -->
         <section class="criteria-grid">
 
@@ -210,5 +235,53 @@
 
     <script src="../js/header_enter_pages_script.js"></script>
     <script src="../js/main_scroll_interaction.js"></script>
+
+    <script>
+        (function() {
+            const companySelect = document.getElementById('company-select');
+            const segmentSelect = document.getElementById('segment-select');
+
+            // Запоминаем последние выбранные значения (изначально пустые)
+            let lastCompany = companySelect.value;
+            let lastSegment = segmentSelect.value;
+
+            // Флаг, был ли уже сделан первый выбор (чтобы не сбрасывать ползунки сразу при загрузке)
+            let firstSelectionMade = (lastCompany !== "" || lastSegment !== "");
+
+            // Функция сброса всех ползунков критериев в 0
+            function resetSliders() {
+                const sliders = document.querySelectorAll('.criteria-grid input[type="range"]');
+                sliders.forEach(slider => {
+                    slider.value = 0;
+                });
+            }
+
+            function onSelectChange() {
+                const currentCompany = companySelect.value;
+                const currentSegment = segmentSelect.value;
+
+                if (!firstSelectionMade) {
+                    // Первый выбор — запоминаем значения, не сбрасываем ползунки
+                    lastCompany = currentCompany;
+                    lastSegment = currentSegment;
+                    firstSelectionMade = true;
+                    return;
+                }
+
+                // Если значения поменялись — сбрасываем ползунки
+                if (currentCompany !== lastCompany || currentSegment !== lastSegment) {
+                    lastCompany = currentCompany;
+                    lastSegment = currentSegment;
+                    resetSliders(); // Сброс всех ползунков в 0
+                }
+                // Если значения не изменились — ничего не делаем
+            }
+
+            companySelect.addEventListener('change', onSelectChange);
+            segmentSelect.addEventListener('change', onSelectChange);
+        })();
+    </script>
+
+
 </body>
 </html>
