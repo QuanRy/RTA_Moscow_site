@@ -56,6 +56,7 @@ footer {
 .criterion label {
     font-weight: 600;
     margin-bottom: 5px;
+    margin-top: 10px;
     display: block;
     color: #100f0d;
 }
@@ -63,7 +64,7 @@ footer {
 .slider-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
 .slider-track {
@@ -175,4 +176,13 @@ footer {
     margin-bottom: 20px;
     font-family: 'Manrope', sans-serif;
     color: #100f0d;
+}
+
+/* деление критериев  */
+.factor-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #e91e63;
+    margin-top: -5px;
 }
