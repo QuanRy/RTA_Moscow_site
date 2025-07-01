@@ -89,20 +89,6 @@ footer {
     outline: none;
 }
 
-.number-input {
-    width: 60px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 999px;
-    text-align: center;
-    background-color: #ffe8ef;
-    color: #FC3A79;
-    font-weight: 500;
-    font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Изменения хэдер, добавление кнопок */
 .header-content {
     display: flex;
@@ -240,4 +226,15 @@ footer {
     -webkit-text-fill-color: transparent;
     user-select: none;
     line-height: 1;
+}
+
+
+/* Запрет на выбор курсором в ползунках текста */
+.criterion label,
+.slider-track,
+.factor-labels {
+    user-select: none; /* Запрет выделения текста */
+    -webkit-user-select: none; /* Для Safari */
+    -moz-user-select: none; /* Для Firefox */
+    -ms-user-select: none; /* Для IE/Edge */
 }
