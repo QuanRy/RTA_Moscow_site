@@ -1,6 +1,6 @@
-.login-container {
-    max-width: 400px;
-    margin: 230px auto;
+.registration-container {
+    max-width: 500px;
+    margin: 238px auto;
     padding: 40px;
     background-color: white;
     border-radius: 24px;
@@ -8,9 +8,12 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    /* justify-content: center; */
+    /* align-items: center */
 }
 
-.login-container h2 {
+.registration-container h2 {
     margin: 0;
     font-size: 22px;
     text-align: center;
@@ -18,14 +21,14 @@
     font-weight: 600;
 }
 
-.login-container label {
+.registration-container label {
     font-weight: 500;
     color: #333;
     margin-bottom: 6px;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.registration-container input[type="email"],
+.registration-container input[type="password"] {
     padding: 10px 16px;
     border: 1px solid #ccc;
     border-radius: 999px;
@@ -33,12 +36,17 @@
     font-size: 14px;
     color: #FC3A79;
     font-family: 'Manrope', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.login-container button {
-    width: 180px;           
-    align-self: center;    
-    padding: 12px 0;        
+.registration-container input[type="password"] {
+    user-select: none;
+}
+
+.registration-container button {
+    margin: 10px auto 0 auto;
+    padding: 12px;
     background: linear-gradient(to right, #FC3A79, #FE88AD);
     color: white;
     font-weight: 600;
@@ -50,16 +58,13 @@
     transition: background 0.3s;
 }
 
-.login-container button:hover {
+.registration-container button:hover {
     background: linear-gradient(to right, #fe5b93, #fda3bd);
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100%; 
-    box-sizing: border-box; 
+.button-wrapper {
+    text-align: center;
 }
-
 
 .form-row {
     display: flex;
@@ -69,7 +74,7 @@
 }
 
 .form-row label {
-    width: 70px;         /* выравниваем двоеточие друг над другом*/
+    width: 100px;
     text-align: right;
     font-weight: 500;
     color: #fc3a8a;
@@ -77,15 +82,25 @@
     white-space: nowrap;
 }
 
-.form-row input[type="text"],
-.form-row input[type="password"] {
-    flex: 1;
-    padding: 10px 16px;
-    border: 1px solid #ccc;
-    border-radius: 999px;
-    background-color: #ffe8ef;
-    font-size: 14px;
-    color: #FC3A79;
+.input-error {
+    border: 2px solid #fc3a79 !important;
+    background-color: #ffe8ef !important;
+    animation: shake 0.2s ease-in-out 2;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0px); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0px); }
+}
+
+.error-message {
+    color: #fc3a79;
+    font-size: 13px;
+    margin: -10px 0 10px 100px;
+    display: none;
+    font-weight: 500;
     font-family: 'Manrope', sans-serif;
-    box-sizing: border-box;
 }

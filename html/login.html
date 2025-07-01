@@ -23,25 +23,37 @@
     </header>
 
     <main>
-        <div class="login-container">
+        <div class="registration-container">
+
             <h2>Авторизация</h2>
-            <div class="form-row">
-                <label for="username">Логин:</label>
-                <input type="text" id="username" name="username">
-            </div>
-            <div class="form-row">
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password">
-            </div>
-            <button type="submit">Авторизоваться</button>
+
+            <form id="registration-form">
+
+                <div class="form-row">
+                    <label for="login_email">Логин:</label>
+                    <input type="email" id="login_email" name="login_email" placeholder="example@mail.com" />
+                </div>
+                <span class="error-message" id="login_email-error"></span>
+
+                <div class="form-row">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required oncopy="return false" oncut="return false">
+                </div>
+                <span class="error-message" id="password-error"></span>
+
+                <div class="button-wrapper">
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
         </div>
     </main>
 
     <footer>
         <p>© RTA Москва, 2025</p>
     </footer>
-
+    
     <script src="../js/header_enter_pages_script.js"></script>
+    <script src="../js/error_login_script.js"></script>
 
 </body>
 </html>
