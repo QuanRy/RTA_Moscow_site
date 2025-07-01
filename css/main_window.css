@@ -25,6 +25,7 @@ footer {
     padding: 10px;
     font-size: 14px;
     color: white;
+    cursor: default;
 }
 
 .logo-container {
@@ -147,7 +148,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 25px auto;
     padding: 0 20px;
 }
 
@@ -221,6 +222,12 @@ footer {
     color: #999999; /* цвет плейсхолдера */
 }
 
+.custom-select:hover {
+    border-color: #fe5b93;
+    background-color: #fcecf0;
+}
+
+
 /* Большой дефис между селектами */
 .select-separator {
     font-size: 40px;
@@ -232,6 +239,23 @@ footer {
     line-height: 1;
 }
 
+/* Иконки */
+.icon-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    width: 43px;
+    height: 43px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: scale(1.1);
+}
+
 
 /* Запрет на выбор курсором в ползунках текста */
 .criterion label,
@@ -241,4 +265,37 @@ footer {
     -webkit-user-select: none; /* Для Safari */
     -moz-user-select: none; /* Для Firefox */
     -ms-user-select: none; /* Для IE/Edge */
+}
+
+
+/* Всплывающая подсказка при наведении на кнопки импорта и экспорта*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background: none;
+    color: #fc3a79;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    padding: 2px 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: -18px; /* ниже иконки */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
