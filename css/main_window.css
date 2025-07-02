@@ -253,6 +253,91 @@ footer {
     line-height: 1;
 }
 
+
+/* ====== Добавление компании / сегмента ======= */
+/* Немного темнее для опции "Добавить" */
+.custom-select option.add-option {
+    color: #100f0d;
+}
+
+
+/* Стили для опций "Добавить ..." */
+.custom-select option.add-option {
+    color: #6a0f33; /* чуть темнее */
+    font-weight: bold;
+}
+
+/* Отдельный стиль для иконки (например, если она будет отображаться рядом) */
+.add-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.custom-select option.add-option[disabled] {
+    color: #999999; 
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    display: none; /* скрыто по умолчанию */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-container {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(252, 58, 121, 0.15);
+    font-family: 'Manrope', sans-serif;
+}
+
+.modal-container h3 {
+    margin: 0 0 20px;
+    color: #FC3A79;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+.modal-container input[type="text"] {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.modal-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-container button:hover {
+    background: linear-gradient(to right, #fe5b93, #fda3bd);
+}
+
+
 /* Иконки */
 .icon-buttons {
     display: flex;

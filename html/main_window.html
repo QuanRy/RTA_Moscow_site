@@ -50,7 +50,9 @@
                 <option>Атол</option>
                 <option>Авторусь</option>
                 <option>Билайн</option>
-                <option>Финам Умскул</option>
+                <option>Умскул</option>
+                <option>Финам</option>
+                <option class="add-option" value="add-company">Добавить компанию</option>
             </select>
 
             <div class="select-separator">—</div>
@@ -63,6 +65,7 @@
                 <option>Родители школьников</option>
                 <option>Пожилые</option>
                 <option>Госслужщие</option>
+                <option class="add-option" value="add-segment">Добавить сегмент</option>
             </select>
 
             <div class="icon-buttons">
@@ -70,6 +73,7 @@
                     <img src="../img/export_icon.png" alt="Экспортировать" class="icon-button" />
                     <span class="tooltip-text">Экспортировать</span>
                 </div>
+
                 <div class="tooltip">
                     <img src="../img/import_icon.png" alt="Импортировать" class="icon-button" />
                     <span class="tooltip-text">Импортировать</span>
@@ -280,11 +284,29 @@
         <p>© RTA Москва, 2025</p>
     </footer>
 
+    <!-- ====== Модальные окна добавления и удаления ====== -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container" id="modal-company" style="display:none;">
+            <h3>Добавить компанию</h3>
+            <input type="text" id="new-company-name" placeholder="Название компании" />
+            <button id="add-company-btn">Добавить компанию</button>
+        </div>
+
+        <div class="modal-container" id="modal-segment" style="display:none;">
+            <h3>Добавить сегмент</h3>
+            <input type="text" id="new-segment-name" placeholder="Название сегмента" />
+            <button id="add-segment-btn">Добавить сегмент</button>
+        </div>
+    </div>
+
+
     <script src="../js/header_enter_pages_script.js"></script>
     <script src="../js/main_scroll_interaction.js"></script>
     <script src="../js/main_select_comp_&_segment.js"></script>
     <script src="../js/count_ostroy_frequency_script.js"></script>
     <script src="../js/round_base_frequency_script.js"></script>
+    <script src="../js/add_comp_or_segment_script.js"></script>
+    <script src="../js/icon_add_in_scroll_script.js"></script>
 
 </body>
 </html>
