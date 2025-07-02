@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let hasUserInteracted = false; // флаг взаимодействия
 
-  // Функция показа/скрытия ошибки
   function showError(show) {
     if (!hasUserInteracted) {
       errorSpan.style.display = 'none';
@@ -22,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Пересчёт итоговой частоты
-  function recalcOstrowFrequency() {
+  // 👉 Сделай функцию глобальной
+  window.recalcOstrowFrequency = function() {
     const val = baseFreqInput.value.trim();
     if (val === '' || isNaN(val)) {
       showError(true);
@@ -45,20 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ostrowFreqInput.value = ostrowFreq.toFixed(1);
   }
 
-  // Обработчики ввода
+  // Обработчики
   baseFreqInput.addEventListener('input', () => {
     hasUserInteracted = true;
-    recalcOstrowFrequency();
+    window.recalcOstrowFrequency();
   });
 
   criteriaGrid.addEventListener('input', e => {
     if (e.target.matches('input[type="range"]')) {
       hasUserInteracted = true;
-      recalcOstrowFrequency();
+      window.recalcOstrowFrequency();
     }
   });
 
-  // Инициализация (без ошибки)
   showError(false);
-  recalcOstrowFrequency();
+  window.recalcOstrowFrequency();
 });
