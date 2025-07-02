@@ -303,6 +303,19 @@ footer {
     opacity: 1;
 }
 
+/* ===== Сообщение о необходимости ввести Б.ч. ===== */
+.error-message {
+    color: #fc3a79;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    white-space: nowrap;
+    display: none; 
+    user-select: none;
+    margin-left: 0; /
+}
+
+
 /* Поле для ввода базовой частоты */
 .base-frequency-input {
     width: 60px;
