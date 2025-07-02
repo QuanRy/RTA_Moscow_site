@@ -1,46 +1,82 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Универсальная функция для кастомного dropdown
   function setupCustomDropdown(dropdownId, addModalId, placeholderText) {
     const dropdown = document.getElementById(dropdownId);
     const selected = dropdown.querySelector('.dropdown-selected');
     const list = dropdown.querySelector('.dropdown-list');
     const selectedText = selected.querySelector('.selected-text');
-    const deleteIcon = selected.querySelector('.delete-icon');
 
-    // Открытие / закрытие списка
+    // Клик по выбранному элементу — открыть/закрыть список
     selected.addEventListener('click', () => {
       list.classList.toggle('hidden');
     });
 
-    // Клик на элемент списка
+    // Выбор элемента из списка
     list.addEventListener('click', (e) => {
       const li = e.target.closest('li');
       if (!li) return;
 
+      // Если нажали на кнопку "Добавить"
       if (li.classList.contains('add-option')) {
-        // Показать модальное окно для добавления
         document.getElementById('modal-overlay').style.display = 'flex';
         document.getElementById(addModalId).style.display = 'flex';
-        // Закрыть dropdown
         list.classList.add('hidden');
-      } else {
-        // Выбор значения
-        selectedText.textContent = li.textContent.trim();
-        deleteIcon.style.visibility = 'visible';
+        return;
+      }
+
+      // Если нажали на крестик удаления в li
+      if (e.target.classList.contains('delete-icon')) {
+        e.stopPropagation(); // чтобы не срабатывал выбор li
+        li.remove(); // удаляем элемент из списка
+
+        // Если удалили выбранный элемент, сбрасываем placeholder
+        if (selectedText.textContent === li.textContent.trim()) {
+          selectedText.textContent = placeholderText;
+        }
+
+        return;
+      }
+
+      // Иначе — выбираем элемент
+      selectedText.textContent = li.textContent.trim();
+      list.classList.add('hidden');
+    });
+
+    // Клик вне дропдауна — закрыть список
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
         list.classList.add('hidden');
       }
     });
 
-    // Нажатие на крестик удаления — сброс
-    deleteIcon.addEventListener('click', (e) => {
-      e.stopPropagation();
-      selectedText.textContent = placeholderText;
-      deleteIcon.style.visibility = 'hidden';
+    // Наведение курсора — закрывать список, если курсор далеко от dropdown
+    document.addEventListener('mousemove', (e) => {
+      if (list.classList.contains('hidden')) return;
+
+      const margin = 5;
+
+      const selectedRect = selected.getBoundingClientRect();
+      const listRect = list.getBoundingClientRect();
+
+      function isNear(rect, x, y) {
+        return (
+          x >= rect.left - margin &&
+          x <= rect.right + margin &&
+          y >= rect.top - margin &&
+          y <= rect.bottom + margin
+        );
+      }
+
+      const insideSelected = isNear(selectedRect, e.clientX, e.clientY);
+      const insideList = isNear(listRect, e.clientX, e.clientY);
+
+      if (!insideSelected && !insideList) {
+        list.classList.add('hidden');
+      }
     });
 
-    // Клик вне dropdown — закрыть список
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) {
+    // Закрытие dropdown по Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !list.classList.contains('hidden')) {
         list.classList.add('hidden');
       }
     });
@@ -49,74 +85,81 @@ document.addEventListener('DOMContentLoaded', function () {
   setupCustomDropdown('company-dropdown', 'modal-company', 'Компания');
   setupCustomDropdown('segment-dropdown', 'modal-segment', 'Сегмент');
 
-  // Добавление новой компании из модалки
+  // Функция для добавления нового элемента в dropdown
+  function addNewItem(dropdownId, modalId, newItemText, placeholderText) {
+    const list = document.querySelector(`#${dropdownId} .dropdown-list`);
+    const addOption = list.querySelector('.add-option');
+
+    // Проверка на дубликаты (без учета регистра и пробелов)
+    const exists = Array.from(list.children).some(li =>
+      li !== addOption && li.textContent.trim().toLowerCase() === newItemText.toLowerCase()
+    );
+
+    if (exists) {
+      alert(`Такой элемент уже есть`);
+      return false;
+    }
+
+    // Создаем новый элемент списка с крестиком
+    const newLi = document.createElement('li');
+    newLi.classList.add('dropdown-item');
+    newLi.textContent = newItemText;
+
+    // Создаем крестик
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = '../img/delete_icon.png';
+    deleteIcon.alt = 'Удалить';
+    deleteIcon.classList.add('delete-icon');
+
+    newLi.appendChild(deleteIcon);
+
+    // Вставляем перед "Добавить" (add-option)
+    list.insertBefore(newLi, addOption);
+
+    // Обновляем выбранный текст
+    const selectedText = document.querySelector(`#${dropdownId} .selected-text`);
+    selectedText.textContent = newItemText;
+
+    return true;
+  }
+
+  // Обработчик добавления новой компании
   document.getElementById('add-company-btn').addEventListener('click', () => {
     const input = document.getElementById('new-company-name');
     const newCompany = input.value.trim();
+
     if (!newCompany) {
       alert('Введите название компании');
       return;
     }
 
-    const companyList = document.querySelector('#company-dropdown .dropdown-list');
-    // Проверяем на дубликаты (регистр игнорируем)
-    const exists = Array.from(companyList.children).some(li => li.textContent.trim().toLowerCase() === newCompany.toLowerCase());
-    if (exists) {
-      alert('Такая компания уже есть');
-      return;
+    if (addNewItem('company-dropdown', 'modal-company', newCompany, 'Компания')) {
+      // Закрыть модалку и очистить инпут
+      document.getElementById('modal-overlay').style.display = 'none';
+      document.getElementById('modal-company').style.display = 'none';
+      input.value = '';
     }
-
-    // Создаем новый элемент списка
-    const newLi = document.createElement('li');
-    newLi.textContent = newCompany;
-    // Добавляем перед пунктом "Добавить компанию"
-    const addOption = companyList.querySelector('.add-option');
-    companyList.insertBefore(newLi, addOption);
-
-    // Обновляем выбранный текст и показываем крестик
-    const selectedText = document.querySelector('#company-dropdown .selected-text');
-    const deleteIcon = document.querySelector('#company-dropdown .delete-icon');
-    selectedText.textContent = newCompany;
-    deleteIcon.style.visibility = 'visible';
-
-    // Скрываем модальное окно и очищаем инпут
-    document.getElementById('modal-overlay').style.display = 'none';
-    document.getElementById('modal-company').style.display = 'none';
-    input.value = '';
   });
 
-  // Добавление нового сегмента из модалки
+  // Обработчик добавления нового сегмента
   document.getElementById('add-segment-btn').addEventListener('click', () => {
     const input = document.getElementById('new-segment-name');
     const newSegment = input.value.trim();
+
     if (!newSegment) {
       alert('Введите название сегмента');
       return;
     }
 
-    const segmentList = document.querySelector('#segment-dropdown .dropdown-list');
-    const exists = Array.from(segmentList.children).some(li => li.textContent.trim().toLowerCase() === newSegment.toLowerCase());
-    if (exists) {
-      alert('Такой сегмент уже есть');
-      return;
+    if (addNewItem('segment-dropdown', 'modal-segment', newSegment, 'Сегмент')) {
+      // Закрыть модалку и очистить инпут
+      document.getElementById('modal-overlay').style.display = 'none';
+      document.getElementById('modal-segment').style.display = 'none';
+      input.value = '';
     }
-
-    const newLi = document.createElement('li');
-    newLi.textContent = newSegment;
-    const addOption = segmentList.querySelector('.add-option');
-    segmentList.insertBefore(newLi, addOption);
-
-    const selectedText = document.querySelector('#segment-dropdown .selected-text');
-    const deleteIcon = document.querySelector('#segment-dropdown .delete-icon');
-    selectedText.textContent = newSegment;
-    deleteIcon.style.visibility = 'visible';
-
-    document.getElementById('modal-overlay').style.display = 'none';
-    document.getElementById('modal-segment').style.display = 'none';
-    input.value = '';
   });
 
-  // Закрытие модального окна при клике на overlay или кнопку отмены
+  // Закрытие модальных окон при клике вне или на кнопку отмены
   document.getElementById('modal-overlay').addEventListener('click', (e) => {
     if (e.target.id === 'modal-overlay') {
       closeModals();
