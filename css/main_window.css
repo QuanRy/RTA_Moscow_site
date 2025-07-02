@@ -189,6 +189,16 @@ footer {
     margin: 20px auto 0px auto; 
 }
 
+.ostrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0px auto 10px auto; 
+}
+
+
 .custom-select {
     appearance: none;
     -webkit-appearance: none;
