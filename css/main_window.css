@@ -184,7 +184,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     max-width: 600px;
     margin: 20px auto 0px auto; 
 }
@@ -201,7 +201,7 @@ footer {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: #999999; /* светлый цвет шрифта для плейсхолдера */
+    color: #999999; 
 
     min-width: 180px;
     cursor: pointer;
@@ -209,7 +209,7 @@ footer {
 }
 
 .custom-select option {
-    color: #100f0d; /* Цвет текста для опций */
+    color: #100f0d; 
 }
 
 .custom-select:focus {
@@ -219,13 +219,17 @@ footer {
 }
 
 .custom-select option[disabled] {
-    color: #999999; /* цвет плейсхолдера */
+    color: #999999; 
 }
 
 .custom-select:hover {
     border-color: #fe5b93;
     background-color: #fcecf0;
+    box-shadow: 0 0 8px rgba(252, 58, 121, 0.4);
+    transform: scale(1.05);
 }
+
+
 
 
 /* Большой дефис между селектами */
@@ -267,8 +271,7 @@ footer {
     -ms-user-select: none; /* Для IE/Edge */
 }
 
-
-/* Всплывающая подсказка при наведении на кнопки импорта и экспорта*/
+/* Всплывающая подсказка при наведении (универсальная) */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -287,7 +290,7 @@ footer {
     padding: 2px 6px;
     position: absolute;
     z-index: 1;
-    bottom: -18px; /* ниже иконки */
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease;
@@ -298,4 +301,162 @@ footer {
 .tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* Поле для ввода базовой частоты */
+.base-frequency-input {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #fc3a79;
+    background-color: #fff0f6;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 1000; 
+    font-size: 25px;  
+    color: #fc3a79;
+    text-align: center;
+    line-height: 60px; 
+    padding: 0;
+    outline: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    appearance: textfield; 
+}
+
+/* Убрать стрелки в Chrome, Safari, Edge */
+.base-frequency-input::-webkit-outer-spin-button,
+.base-frequency-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Убрать стрелки в Firefox */
+.base-frequency-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.base-frequency-input::placeholder {
+    color: #fc3a79;
+    font-weight: 600;
+    opacity: 0.6;
+    line-height: 60px;
+}
+
+.base-frequency-input:hover,
+.base-frequency-input:focus {
+    box-shadow: 0 0 8px rgba(252, 58, 121, 0.4);
+    transform: scale(1.05);
+}
+
+
+/* ========  частота по Остроу  ======== */
+/* Tooltip для частоты по Остроу */
+.tooltip-ostrow {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-ostrow .tooltip-text-ostrow {
+    visibility: hidden;
+    opacity: 0;
+    background: #fc3a79;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(252, 58, 121, 0.6);
+}
+
+.tooltip-ostrow:hover .tooltip-text-ostrow {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Сияющая обёртка */
+.ostrow-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #FC3A79, #FE88AD, #FC3A79);
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+    box-shadow:
+        0 0 12px #FC3A79,
+        0 0 20px #FE88AD,
+        0 0 30px rgba(252, 58, 121, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.ostrow-wrapper:hover {
+    transform: scale(1.08);
+}
+
+/* Поле ввода */
+.ostrow-frequency-input {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff0f6;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 1000;
+    font-size: 25px;
+    color: #FC3A79;
+    text-align: center;
+    line-height: 60px;
+    padding: 0;
+    outline: none;
+    appearance: textfield;
+    cursor: text;
+    user-select: all;
+
+    /* Переливающийся текст */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    /* background-image: linear-gradient(to right, #FC3A79, #FE88AD, #FC3A79); */
+    background-size: 200% auto;
+    animation: textGradientMove 3s linear infinite;
+}
+
+/* Убрать стрелки */
+.ostrow-frequency-input::-webkit-outer-spin-button,
+.ostrow-frequency-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ostrow-frequency-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.ostrow-frequency-input::placeholder {
+    color: #fc3a79;
+    font-weight: 600;
+    opacity: 0.6;
+    line-height: 60px;
+}
+
+/* Анимации */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes textGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

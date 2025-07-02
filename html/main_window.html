@@ -25,6 +25,19 @@
     <main>
         <!-- Контейнер с двумя выпадающими списками -->
         <div class="select-container">
+
+            <!-- Базовая частота -->
+            <div class="tooltip">
+                <input
+                    type="number"
+                    step="0.1"
+                    inputmode="decimal"
+                    class="base-frequency-input"
+                    placeholder="Б.ч."
+                />
+                <span class="tooltip-text">Базовая частота</span>
+            </div>
+
             <select class="custom-select" id="company-select" aria-label="Компания">
                 <option value="" disabled selected hidden>Компания</option>
                 <option>4 лапы</option>
@@ -237,8 +250,23 @@
                     </div>
                 </div>
             </div>
-
         </section>
+
+        <div class="select-container">
+            <div class="tooltip-ostrow ostrow-wrapper">
+                <input
+                    type="number"
+                    step="0.1"
+                    inputmode="decimal"
+                    class="ostrow-frequency-input"
+                    placeholder="Остроу"
+                    readonly
+                    value="0.0"
+                />
+                <span class="tooltip-text-ostrow">Частота по Остроу</span>
+            </div>
+        </div>
+
     </main>
 
     <footer>
