@@ -44,29 +44,45 @@
                 <span class="tooltip-text">Базовая частота</span>
             </div>
 
-            <select class="custom-select" id="company-select" aria-label="Компания">
-                <option value="" disabled selected hidden>Компания</option>
-                <option>4 лапы</option>
-                <option>Атол</option>
-                <option>Авторусь</option>
-                <option>Билайн</option>
-                <option>Умскул</option>
-                <option>Финам</option>
-                <option class="add-option" value="add-company">Добавить компанию</option>
-            </select>
+            <div class="custom-dropdown" id="company-dropdown">
+            <div class="dropdown-selected" tabindex="0" aria-label="Компания">
+                <span class="selected-text">Компания</span>
+                <img src="../img/delete_icon.png" alt="Удалить" class="delete-icon hidden" />
+            </div>
+            <ul class="dropdown-list hidden">
+                <li class="dropdown-item">4 лапы</li>
+                <li class="dropdown-item">Атол</li>
+                <li class="dropdown-item">Авторусь</li>
+                <li class="dropdown-item">Билайн</li>
+                <li class="dropdown-item">Умскул</li>
+                <li class="dropdown-item">Финам</li>
+                <li class="dropdown-item add-option">
+                <img src="../img/add_icon.png" alt="Добавить" class="add-icon" />
+                Добавить компанию
+                </li>
+            </ul>
+            </div>
 
             <div class="select-separator">—</div>
 
-            <select class="custom-select" id="segment-select" aria-label="Сегмент">
-                <option value="" disabled selected hidden>Сегмент</option>
-                <option>Школьники</option>
-                <option>Учащиеся СПО и студенты</option>
-                <option>Работающая молодежь</option>
-                <option>Родители школьников</option>
-                <option>Пожилые</option>
-                <option>Госслужщие</option>
-                <option class="add-option" value="add-segment">Добавить сегмент</option>
-            </select>
+            <div class="custom-dropdown" id="segment-dropdown">
+            <div class="dropdown-selected" tabindex="0" aria-label="Сегмент">
+                <span class="selected-text">Сегмент</span>
+                <img src="../img/delete_icon.png" alt="Удалить" class="delete-icon hidden" />
+            </div>
+            <ul class="dropdown-list hidden">
+                <li class="dropdown-item">Школьники</li>
+                <li class="dropdown-item">Учащиеся СПО и студенты</li>
+                <li class="dropdown-item">Работающая молодежь</li>
+                <li class="dropdown-item">Родители школьников</li>
+                <li class="dropdown-item">Пожилые</li>
+                <li class="dropdown-item">Госслужщие</li>
+                <li class="dropdown-item add-option">
+                <img src="../img/add_icon.png" alt="Добавить" class="add-icon" />
+                Добавить сегмент
+                </li>
+            </ul>
+            </div>
 
             <div class="icon-buttons">
                 <div class="tooltip">

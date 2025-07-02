@@ -279,6 +279,103 @@ footer {
     color: #999999; 
 }
 
+/* ====== НОВЫЙ ВЫПАДАЮБЩИЙ СПИСОК ====== */
+.custom-dropdown {
+  position: relative;
+  width: 220px;
+  font-family: 'Manrope', sans-serif;
+  margin-bottom: 10px;
+}
+
+.dropdown-selected {
+  background-color: #f7f7f7;
+  border: 2px solid #fc3a79;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #999999;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-selected:focus {
+  outline: none;
+  border-color: #fc3a79;
+  color: #333;
+  box-shadow: 0 0 8px rgba(252, 58, 121, 0.4);
+  transform: scale(1.05);
+}
+
+.dropdown-list {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #fc3a79;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 4px 0 0 0;
+  padding: 0;
+  list-style: none;
+  z-index: 10;
+}
+
+.dropdown-list.hidden {
+  display: none;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  color: #100f0d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #fcecf0;
+}
+
+.add-option {
+  color: #6a0f33;
+  font-weight: bold;
+}
+
+.add-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.delete-icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.dropdown-selected:hover .delete-icon {
+  visibility: visible;
+}
+
+.selected-text {
+  flex-grow: 1;
+  user-select: none;
+}
+
+
+
+
+
+
 /* Модальное окно */
 .modal-overlay {
     position: fixed;
@@ -299,6 +396,7 @@ footer {
     width: 100%;
     box-shadow: 0 4px 20px rgba(252, 58, 121, 0.15);
     font-family: 'Manrope', sans-serif;
+    flex-direction: column;
 }
 
 .modal-container h3 {
