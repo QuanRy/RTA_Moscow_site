@@ -316,7 +316,7 @@ footer::before {
 }
 
 .dropdown-selected {
-  background-color: #fcecf0;
+  background: linear-gradient(rgb(255 255 255 / 47%), rgb(238 230 247 / 31%)), url(../img/blur_background.jpg) center / cover no-repeat;
   border: 2px solid #fc3a79;
   border-radius: 999px;
   padding: 10px 20px;
@@ -329,6 +329,7 @@ footer::before {
   align-items: center;
   user-select: none;
   transition: border-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 35px 31px rgba(0, 0, 0, 0.04);
 }
 
 .dropdown-selected:focus {
