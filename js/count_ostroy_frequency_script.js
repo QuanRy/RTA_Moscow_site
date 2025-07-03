@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const criteriaGrid = document.querySelector('.criteria-grid');
   const errorSpan = document.getElementById('basefreq-error');
 
-  let hasUserInteracted = false; // флаг взаимодействия
+  let hasUserInteracted = false;
 
   function showError(show) {
     if (!hasUserInteracted) {
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 👉 Сделай функцию глобальной
   window.recalcOstrowFrequency = function() {
     const val = baseFreqInput.value.trim();
     if (val === '' || isNaN(val)) {
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ostrowFreqInput.value = ostrowFreq.toFixed(1);
   }
 
-  // Обработчики
   baseFreqInput.addEventListener('input', () => {
     hasUserInteracted = true;
     window.recalcOstrowFrequency();
