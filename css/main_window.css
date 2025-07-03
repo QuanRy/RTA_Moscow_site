@@ -203,8 +203,10 @@ footer {
     font-size: 40px;
     font-weight: 700;
     background: linear-gradient(to right, #FC3A79, #FE88AD);
-    -webkit-background-clip: text;
+    background-clip: text;             
+    -webkit-background-clip: text;    
     -webkit-text-fill-color: transparent;
+    color: transparent;               
     user-select: none;
     line-height: 1;
 }
@@ -302,10 +304,6 @@ footer {
 }
 
 
-
-
-
-
 /* Модальное окно */
 .modal-overlay {
     position: fixed;
@@ -390,10 +388,10 @@ footer {
 .criterion label,
 .slider-track,
 .factor-labels {
-    user-select: none; /* Запрет выделения текста */
-    -webkit-user-select: none; /* Для Safari */
-    -moz-user-select: none; /* Для Firefox */
-    -ms-user-select: none; /* Для IE/Edge */
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
 }
 
 /* Всплывающая подсказка при наведении (универсальная) */
@@ -437,7 +435,7 @@ footer {
     font-family: 'Manrope', sans-serif;
     white-space: normal;
     user-select: none;
-    max-width: 200px;      /* ширина блока, можно подстроить */
+    max-width: 200px;    
 }
 
 
@@ -467,9 +465,11 @@ footer {
     margin: 0;
 }
 
-/* Убрать стрелки в Firefox */
+/* Убрать стрелки у Базовой частоты во всех браузерах */
 .base-frequency-input[type=number] {
-    -moz-appearance: textfield;
+    appearance: textfield;         
+    -moz-appearance: textfield;    
+    -webkit-appearance: none;      
 }
 
 .base-frequency-input::placeholder {
@@ -487,7 +487,6 @@ footer {
 
 
 /* ========  частота по Остроу  ======== */
-/* Tooltip для частоты по Остроу */
 .tooltip-ostrow {
     position: relative;
     display: inline-block;
@@ -576,7 +575,9 @@ footer {
 }
 
 .ostrow-frequency-input[type=number] {
-    -moz-appearance: textfield;
+    appearance: textfield;          
+    -moz-appearance: textfield;    
+    -webkit-appearance: none;       
 }
 
 .ostrow-frequency-input::placeholder {
