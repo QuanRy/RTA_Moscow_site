@@ -12,10 +12,10 @@ body {
     flex-direction: column;
 
     
-    background-image: url('../img/big_background_img.jpg');
+    background-image: url('../img/G_03.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 150%;
-    background-position: center bottom -215px;
+    background-size: 110% 150%;
+    background-position: center bottom -432px;
     background-attachment: fixed; 
 }
 
@@ -248,11 +248,12 @@ footer::before {
 }
 
 .criteria-block {
-    background-color: #fcecf0;
+    background: linear-gradient(rgb(255 255 255 / 81%), rgb(255 255 255 / 85%)), url(../img/blur_background.jpg) center / cover no-repeat;
     border-radius: 20px;
     padding: 10px 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 35px 31px rgba(0, 0, 0, 0.4);
 }
+
 
 .criteria-title {
     text-align: center;
