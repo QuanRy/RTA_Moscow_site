@@ -471,6 +471,10 @@ body {
     backdrop-filter: blur(0); /* убран эффект "дыма" */
 }
 
+.base-frequency-input::placeholder {
+    color: white;
+}
+
 .base-frequency-input:hover,
 .base-frequency-input:focus {
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.6), 0 0 6px rgba(252, 58, 121, 0.5);
