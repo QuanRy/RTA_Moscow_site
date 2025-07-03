@@ -14,9 +14,9 @@ body {
     
     background-image: url('../img/big_background_img.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed; /* чтобы фон не сдвигался при скролле */
+    background-size: 100% 150%;
+    background-position: center bottom -215px;
+    background-attachment: fixed; 
 }
 
 
