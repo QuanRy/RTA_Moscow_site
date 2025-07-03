@@ -349,7 +349,7 @@ footer {
 }
 
 .modal-container button {
-    width: 100%;
+    width: 200px;
     padding: 12px;
     background: linear-gradient(to right, #FC3A79, #FE88AD);
     color: white;
@@ -359,6 +359,8 @@ footer {
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s;
+    display: block;
+    margin: 0 auto;
 }
 
 .modal-container button:hover {
