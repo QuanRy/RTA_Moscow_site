@@ -19,12 +19,10 @@ header {
     cursor: pointer;
 }
 
-
 .logo-container video {
     height: 80px;  
     cursor: pointer;
 }
-
 
 .logo-container h1 {
     color: black;
@@ -56,7 +54,6 @@ header {
     width: 100%;
     left: 0;
 }
-
 
 /* Меняем стили для блока с ссылками */
 .auth-buttons {
