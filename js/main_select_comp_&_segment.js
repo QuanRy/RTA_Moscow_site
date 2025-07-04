@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
       slider.value = 0;
     });
 
-    // Пересчитать частоту по Остроу
     if (typeof window.recalcOstrowFrequency === 'function') {
       window.recalcOstrowFrequency();
     }
@@ -19,9 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const selected = dropdown.querySelector('.dropdown-selected');
     const list = dropdown.querySelector('.dropdown-list');
     const selectedText = selected.querySelector('.selected-text');
+    const arrow = selected.querySelector('.arrow');
 
     selected.addEventListener('click', () => {
       list.classList.toggle('hidden');
+      arrow.classList.toggle('rotated');
     });
 
     list.addEventListener('click', (e) => {
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('modal-overlay').style.display = 'flex';
         document.getElementById(addModalId).style.display = 'flex';
         list.classList.add('hidden');
+        arrow.classList.remove('rotated');
         return;
       }
 
@@ -51,15 +53,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       selectedText.textContent = newValue;
       list.classList.add('hidden');
+      arrow.classList.remove('rotated');
 
       const isFirstSelection = !prevValue;
       const isSameValue = prevValue === newValue;
 
       if (!isFirstSelection && !isSameValue) {
-        resetSliders(); // сброс ползунков и пересчёт частоты
+        resetSliders();
       }
 
-      // Обновляем предыдущее значение
       if (type === 'company') {
         prevSelectedCompany = newValue;
       } else {
@@ -70,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', (e) => {
       if (!dropdown.contains(e.target)) {
         list.classList.add('hidden');
+        arrow.classList.remove('rotated');
       }
     });
 
@@ -91,12 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (!isNear(selectedRect, e.clientX, e.clientY) && !isNear(listRect, e.clientX, e.clientY)) {
         list.classList.add('hidden');
+        arrow.classList.remove('rotated');
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !list.classList.contains('hidden')) {
         list.classList.add('hidden');
+        arrow.classList.remove('rotated');
       }
     });
   }

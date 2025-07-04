@@ -161,6 +161,18 @@ body {
   /* box-shadow: 0 35px 31px rgba(0, 0, 0, 0.04); */
 }
 
+/* Анимация поворота стрелочки при выпадающем списке */
+.dropdown-selected .arrow {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-selected .arrow.rotated {
+  transform: rotate(180deg);
+}
+
 .dropdown-selected:hover {
   transform: scale(1.05);
   border-color: #fc3a79;
