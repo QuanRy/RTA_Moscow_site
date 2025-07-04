@@ -247,8 +247,7 @@ body {
   user-select: none;
 }
 
-
-/* Модальное окно */
+/* ================== Модальные окна (всплывающие) ================== */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -277,6 +276,11 @@ body {
     font-weight: 600;
     font-size: 20px;
     text-align: center;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* расстояние между текстом и delete-target */
+    justify-content: center;
 }
 
 .modal-container input[type="text"] {
@@ -327,6 +331,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(252, 58, 121, 0.3);
 }
+/* =========================================== */
 
 /* ================== Иконки импорта / экспорта ================== */
 .icon-buttons {

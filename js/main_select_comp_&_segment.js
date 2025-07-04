@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
   let prevSelectedCompany = null;
   let prevSelectedSegment = null;
+  let pendingDeleteLi = null;
+  let pendingDeleteType = null;
 
   function resetSliders() {
     const sliders = document.querySelectorAll('.slider');
-    sliders.forEach(slider => {
-      slider.value = 0;
-    });
-
+    sliders.forEach(slider => slider.value = 0);
     if (typeof window.recalcOstrowFrequency === 'function') {
       window.recalcOstrowFrequency();
     }
@@ -39,12 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (e.target.classList.contains('delete-icon')) {
         e.stopPropagation();
-        li.remove();
-
-        if (selectedText.textContent === li.textContent.trim()) {
-          selectedText.textContent = placeholderText;
-        }
-
+        pendingDeleteLi = li;
+        pendingDeleteType = type;
+        openDeleteModal(type);
         return;
       }
 
@@ -83,16 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectedRect = selected.getBoundingClientRect();
       const listRect = list.getBoundingClientRect();
 
-      function isNear(rect, x, y) {
-        return (
-          x >= rect.left - margin &&
-          x <= rect.right + margin &&
-          y >= rect.top - margin &&
-          y <= rect.bottom + margin
-        );
-      }
+      const isNear = (rect, x, y) => (
+        x >= rect.left - margin &&
+        x <= rect.right + margin &&
+        y >= rect.top - margin &&
+        y <= rect.bottom + margin
+      );
 
-      if (!isNear(selectedRect, e.clientX, e.clientY) && !isNear(listRect, e.clientX, e.clientY)) {
+      if (!isNear(selectedRect, e.clientX, e.clientY) &&
+          !isNear(listRect, e.clientX, e.clientY)) {
         list.classList.add('hidden');
         arrow.classList.remove('rotated');
       }
@@ -150,8 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (addNewItem('company-dropdown', 'modal-company', newCompany, 'Компания')) {
-      document.getElementById('modal-overlay').style.display = 'none';
-      document.getElementById('modal-company').style.display = 'none';
+      closeModals();
       input.value = '';
     }
   });
@@ -166,8 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (addNewItem('segment-dropdown', 'modal-segment', newSegment, 'Сегмент')) {
-      document.getElementById('modal-overlay').style.display = 'none';
-      document.getElementById('modal-segment').style.display = 'none';
+      closeModals();
       input.value = '';
     }
   });
@@ -183,8 +176,43 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function closeModals() {
-    document.getElementById('modal-overlay').style.display = 'none';
-    document.getElementById('modal-company').style.display = 'none';
-    document.getElementById('modal-segment').style.display = 'none';
+    ['modal-overlay', 'modal-company', 'modal-segment', 'modal-delete']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
   }
+
+  
+  function openDeleteModal(type) {
+    const modal = document.getElementById('modal-delete');
+    const overlay = document.getElementById('modal-overlay');
+    const title = modal?.querySelector('h3');
+
+    if (title) {
+      title.textContent = `Вы действительно хотите удалить ${type === 'company' ? 'компанию' : 'сегмент'}?`;
+    }
+
+    if (overlay) overlay.style.display = 'flex';
+    if (modal) modal.style.display = 'flex';
+  }
+
+  document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+    if (pendingDeleteLi && pendingDeleteType) {
+      const selectedText = document.querySelector(`#${pendingDeleteType}-dropdown .selected-text`);
+      if (selectedText.textContent === pendingDeleteLi.textContent.trim()) {
+        selectedText.textContent = pendingDeleteType === 'company' ? 'Компания' : 'Сегмент';
+      }
+      pendingDeleteLi.remove();
+    }
+    closeModals();
+    pendingDeleteLi = null;
+    pendingDeleteType = null;
+  });
+
+  document.getElementById('cancel-delete-btn').addEventListener('click', () => {
+    closeModals();
+    pendingDeleteLi = null;
+    pendingDeleteType = null;
+  });
 });

@@ -340,7 +340,25 @@
             <input type="text" id="new-segment-name" placeholder="Название сегмента" />
             <button id="add-segment-btn">Добавить сегмент</button>
         </div>
+
+        <!-- ====== Модальное окно подтверждения удаления сегмента / компании ====== -->
+        <div class="modal-container" id="modal-delete" style="display: none;">
+            <h3>Вы действительно хотите удалить?</h3>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <button id="confirm-delete-btn" style="display: flex; align-items: center; width: 110px;">
+                    <span style="margin: 0 10px;">Да</span>
+                    <img src="../img/accept_icon.png" alt="Да" width="40" height="40">
+                </button>
+                <button id="cancel-delete-btn" style="display: flex; align-items: center; width: 110px;">
+                    <span style="margin: 0 10px;">Нет</span>
+                    <img src="../img/cancel_icon.png" alt="Нет" width="40" height="40">
+                </button>
+            </div>
+        </div>
+        
     </div>
+
+
 
 
     <script src="../js/header_enter_pages_script.js"></script>
