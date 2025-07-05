@@ -81,27 +81,33 @@
             const video = document.getElementById('intro-video');
             const overlay = document.getElementById('intro-overlay');
             const shutters = document.querySelectorAll('.shutter');
+            let fadeStarted = false;
 
-            video.addEventListener('ended', function () {
-                // 1. Запускаем анимацию прозрачности
-                video.classList.add('fade-out');
+            video.addEventListener('timeupdate', function () {
+                if (!fadeStarted && video.currentTime >= 2.45) {
+                    fadeStarted = true;
 
-                // 2. Ждем окончания анимации (0.3s), затем скрываем и запускаем жалюзи
-                setTimeout(() => {
-                    video.classList.add('hidden');
+                    // 1. Запускаем анимацию прозрачности
+                    video.classList.add('fade-out');
 
-                    // 3. Теперь запускаем жалюзи
-                    shutters.forEach((shutter) => {
-                        shutter.classList.add('open');
-                    });
-                }, 1500); // соответствие transition: 0.3s
+                    // 2. Ждем окончания анимации (1.5s), затем скрываем и запускаем жалюзи
+                    setTimeout(() => {
+                        video.classList.add('hidden');
 
-                setTimeout(() => {
-                    overlay.style.zIndex = '-1';
-                }, 2500);
+                        // 3. Теперь запускаем жалюзи
+                        shutters.forEach((shutter) => {
+                            shutter.classList.add('open');
+                        });
+                    }, 1200); // соответствие transition: 1.5s
+
+                    setTimeout(() => {
+                        overlay.style.zIndex = '-1';
+                    }, 2200);
+                }
             });
         });
     </script>
+
 
     <script src="../js/header_enter_pages_script.js"></script>
     <script src="../js/error_login_script.js"></script>

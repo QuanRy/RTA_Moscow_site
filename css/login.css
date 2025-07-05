@@ -113,13 +113,13 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 10px;
+    /* padding: 10px; */
     box-sizing: border-box;
     /* background-color: #ffffff; */
 }
 
 #intro-video.fade-out {
-    transition: opacity 1.5s ease;
+    transition: opacity 1.2s ease;
     opacity: 0;
 }
 
