@@ -77,19 +77,29 @@
 
     <!-- Скрипт анимации -->
     <script>
-        const introVideo = document.getElementById('intro-video');
-        const overlay = document.getElementById('intro-overlay');
-        const shutters = document.querySelectorAll('.shutter');
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.getElementById('intro-video');
+            const overlay = document.getElementById('intro-overlay');
+            const shutters = document.querySelectorAll('.shutter');
 
-        introVideo.addEventListener('ended', () => {
-            // Запуск анимации штор
-            shutters.forEach((sh, i) => {
-                setTimeout(() => sh.classList.add('open'), i * 80);
+            video.addEventListener('ended', function () {
+                // 1. Запускаем анимацию прозрачности
+                video.classList.add('fade-out');
+
+                // 2. Ждем окончания анимации (0.3s), затем скрываем и запускаем жалюзи
+                setTimeout(() => {
+                    video.classList.add('hidden');
+
+                    // 3. Теперь запускаем жалюзи
+                    shutters.forEach((shutter) => {
+                        shutter.classList.add('open');
+                    });
+                }, 1500); // соответствие transition: 0.3s
+
+                setTimeout(() => {
+                    overlay.style.zIndex = '-1';
+                }, 2500);
             });
-
-            // Удаление overlay после окончания анимации
-            const total = shutters.length * 80 + 1000;
-            setTimeout(() => overlay.remove(), total);
         });
     </script>
 
