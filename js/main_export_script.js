@@ -63,7 +63,7 @@ function exportToExcel() {
     rows.push([]);
     rows.push([
         { v: 'Базовая частота', s: greenStyle },
-        { v: '3,1', s: { ...greenStyle, font: { bold: true } } }
+        { v: '0,0', s: { ...greenStyle, font: { bold: true } } }
     ]);
     rows.push([
         { v: 'Частота по Остроу', s: greenStyle },

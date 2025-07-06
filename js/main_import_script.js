@@ -1,3 +1,4 @@
+// modal_import.js
 document.addEventListener('DOMContentLoaded', function () {
     const importIcon = document.querySelector('img[alt="Импортировать"]');
     const modalOverlay = document.getElementById('modal-overlay');
@@ -12,8 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     importSubmit.addEventListener('click', () => {
-        modalImport.style.display = 'none';
-        modalOverlay.style.display = 'none';
+        const file = fileInput.files[0];
+        if (file) {
+            readExcelAndApplyValues(file, () => {
+                // Закрываем окно после успешного импорта
+                modalImport.style.display = 'none';
+                modalOverlay.style.display = 'none';
+            });
+        } else {
+            alert("Сначала выберите файл для импорта.");
+        }
     });
 
     modalOverlay.addEventListener('click', (e) => {
@@ -27,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fileNameSpan.textContent = fileInput.files[0]?.name || 'Путь к файлу';
     });
 
-    // Drag & Drop обработчики (пока без загрузки)
+    // Drag & Drop
     const dropZone = document.getElementById('drop-zone');
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
