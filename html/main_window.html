@@ -355,17 +355,30 @@
                 </button>
             </div>
         </div>
+
+        <!-- Модальное окно импорта -->
+        <div class="modal-container" id="modal-import" style="display: none;">
+            <h3>Импортировать файл</h3>
+            <label class="custom-file-input">
+                <input type="file" id="file-input" accept=".xlsx,.csv,.ods,.xls" style="display: none;" />
+                <span id="file-name">Путь к файлу</span>
+            </label>
+            <!-- Область drag & drop -->
+            <div id="drop-zone">
+                <p>Перетащите файл сюда</p>
+                <img src="../img/drag&drop_icon.png" alt="Drag & Drop" />
+            </div>
+            <button id="import-submit-btn">Импортировать</button>
+        </div>
         
     </div>
-
-
-
 
     <script src="../js/header_enter_pages_script.js"></script>
     <script src="../js/main_select_comp_&_segment.js"></script>
     <script src="../js/count_ostroy_frequency_script.js"></script>
     <script src="../js/round_base_frequency_script.js"></script>
-    <script src="../js/logo_animation_control_script.js"></script>
+    <script src="../js/logo_animation_control_script.js"></script>\
+    <script src="../js/main_import_script.js"></script>
 
 </body>
 </html>
