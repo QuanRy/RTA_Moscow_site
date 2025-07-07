@@ -143,3 +143,8 @@
     font-weight: 500;
     font-family: 'Manrope', sans-serif;
 }
+
+.error-message::after {
+    content: "";
+    display: none;
+}

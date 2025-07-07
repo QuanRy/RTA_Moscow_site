@@ -102,6 +102,10 @@
     font-family: 'Manrope', sans-serif;
 }
 
+.error-message::after {
+    content: "";
+    display: none;
+}
 
 
 /* ============== Анимация логотипа и штор, при первой загрузке страницы ============== */
@@ -113,9 +117,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    /* padding: 10px; */
     box-sizing: border-box;
-    /* background-color: #ffffff; */
 }
 
 #intro-video.fade-out {
@@ -133,7 +135,6 @@
     object-fit: contain; 
     z-index: 9999;
     position: relative;
-    /* border-radius: 8px;  */
 }
 
 /* Шторы поверх видео — сначала прозрачные */
