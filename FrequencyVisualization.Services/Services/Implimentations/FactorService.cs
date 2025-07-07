@@ -84,7 +84,7 @@ namespace FrequencyVisualization.Services
                     MinDescription = "Сообщение уже было в эфире",
                     MaxDescription = "Сообщение впервые в эфире",
                 },
-                                new Factor()
+                new Factor()
                 {
                     Header = "Коммуникация",
                     MinDescription = "Продуктовая коммуникация",
