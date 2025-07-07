@@ -1,0 +1,64 @@
+@FrequencyVisualizationWebAPI_HostAddress = http://localhost:5167
+@Token = {{Замените на ваш JWT-токен}}
+
+### Вход для получения JWT-токена
+POST {{FrequencyVisualizationWebAPI_HostAddress}}/user/login
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+login=testuser&password=testpassword
+
+### Создание нового пользователя (аутентификация не требуется)
+POST {{FrequencyVisualizationWebAPI_HostAddress}}/user
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+fio=Иван Иванов&login=newuser&password=newpassword&role=Admin
+
+### Получение списка компаний для пользователя (требуется аутентификация)
+GET {{FrequencyVisualizationWebAPI_HostAddress}}/company?UserId={{Замените на UserId}}
+Authorization: Bearer {{Token}}
+Accept: application/json
+
+### Получение компании по ID (требуется аутентификация)
+GET {{FrequencyVisualizationWebAPI_HostAddress}}/company/{{Замените на CompanyId}}
+Authorization: Bearer {{Token}}
+Accept: application/json
+
+### Создание новой компании (требуется аутентификация)
+POST {{FrequencyVisualizationWebAPI_HostAddress}}/company
+Authorization: Bearer {{Token}}
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+nameCompany=НоваяКомпания&UserId={{Замените на UserId}}
+
+### Обновление компании (требуется аутентификация)
+PUT {{FrequencyVisualizationWebAPI_HostAddress}}/company
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "{{Замените на CompanyId}}",
+  "name": "ОбновленноеНазваниеКомпании",
+  "userId": "{{Замените на UserId}}"
+}
+
+### Удаление компании (требуется аутентификация)
+DELETE {{FrequencyVisualizationWebAPI_HostAddress}}/company/{{Замените на CompanyId}}
+Authorization: Bearer {{Token}}
+Accept: application/json
+
+### Создание нового сегмента (требуется аутентификация)
+POST {{FrequencyVisualizationWebAPI_HostAddress}}/segment
+Authorization: Bearer {{Token}}
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+nameSegment=НовыйСегмент&companyId={{Замените на CompanyId}}
+
+### Удаление сегмента (требуется аутентификация)
+DELETE {{FrequencyVisualizationWebAPI_HostAddress}}/segment/{{Замените на SegmentId}}
+Authorization: Bearer {{Token}}
+Accept: application/json

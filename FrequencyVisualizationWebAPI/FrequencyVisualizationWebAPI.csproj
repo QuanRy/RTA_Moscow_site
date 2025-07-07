@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FrequencyVisualization.ObjectModel\FrequencyVisualization.ObjectModel.csproj" />
+    <ProjectReference Include="..\FrequencyVisualization.Services\FrequencyVisualization.Services.csproj" />
+  </ItemGroup>
+
+</Project>
