@@ -41,7 +41,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//  1. Включаем поддержку статических файлов 
+app.UseStaticFiles();
+
+//  2. Редирект с корня сайта "/" на login.html
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/html/login.html");
+    return Task.CompletedTask;
+});
 
 app.UseHttpsRedirection();
 
