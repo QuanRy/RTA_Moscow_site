@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация — RTA</title>
+    <link rel="stylesheet" href="../css/main_window.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/header_style.css">
+    <link rel="stylesheet" href="../css/footer_style.css">
+    <link rel="icon" type="image/svg+xml" href="../img/logo_without_text.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- === Видео и жалюзи === -->
+    <div id="intro-overlay">
+        <video id="intro-video" src="../img/short_logo_animation.mp4" autoplay muted playsinline></video>
+        <div class="shutters-container">
+            <!-- 12 полос -->
+            <div class="shutter"></div><div class="shutter"></div><div class="shutter"></div>
+            <div class="shutter"></div><div class="shutter"></div><div class="shutter"></div>
+            <div class="shutter"></div><div class="shutter"></div><div class="shutter"></div>
+            <div class="shutter"></div><div class="shutter"></div><div class="shutter"></div>
+        </div>
+    </div>
+
+    <!-- === Основной контент === -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <video id="logo-video" src="../img/logo_animation.mp4" muted playsinline></video>
+                <h1>Расчет частоты по Остроу</h1>
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="auth-link registration">Регистрация</a>
+                <a href="#" class="auth-link login">Войти</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="registration-container">
+            <h2>Авторизация</h2>
+            <form id="registration-form">
+                <div class="form-row">
+                    <label for="login_email">Логин:</label>
+                    <input type="email" id="login_email" name="login_email" placeholder="example@mail.com" />
+                </div>
+                <span class="error-message" id="login_email-error"></span>
+
+                <div class="form-row">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required oncopy="return false" oncut="return false">
+                </div>
+                <span class="error-message" id="password-error"></span>
+
+                <div class="button-wrapper">
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="https://rta-moscow.com/policy" class="footer-link" target="_blank">Политика конфиденциальности</a>
+            </div>
+            <div class="footer-center">
+                <a href="https://rta-moscow.com/" class="footer-link" target="_blank">© RTA Москва, 2025</a>
+            </div>
+            <div class="footer-right">
+                <a href="https://rta-moscow.com/" class="footer-link" target="_blank">ООО "ТуБиДу" ОГРН 1117746540108</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="../js/header_enter_pages_script.js"></script>
+    <script src="../js/error_login_script.js"></script>
+    <script src="../js/logo_animation_control_script.js"></script>
+    <script src="../js/logo_animation_before_login_script.js"></script>
+
+</body>
+</html>

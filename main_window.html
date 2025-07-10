@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>RTA - РОЗ</title>
+    <link rel="stylesheet" href="../css/main_window.css">
+    <link rel="stylesheet" href="../css/header_style.css">
+    <link rel="stylesheet" href="../css/footer_style.css">
+    <link rel="icon" type="image/svg+xml" href="../img/logo_without_text.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <video id="logo-video" src="../img/logo_animation.mp4" muted playsinline></video>
+                <h1> Расчет частоты по Остроу</h1>
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="auth-link registration">Регистрация</a>
+                <a href="#" class="auth-link login">Войти</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- Контейнер с двумя выпадающими списками -->
+        <div class="select-container">
+
+             <!-- Ошибка слева от поля -->
+            <span id="basefreq-error" class="error-message" style="display:none;">
+                Введите<br>базовую частоту
+            </span>
+
+
+            <!-- Базовая частота -->
+            <div class="tooltip-base">
+                <div class="base-wrapper">
+                    <input
+                        type="number"
+                        step="0.1"
+                        inputmode="decimal"
+                        class="base-frequency-input"
+                        placeholder="0,0"
+                    />
+                </div>
+                <span class="tooltip-text-base">Базовая частота</span>
+            </div>
+
+            <!-- ===== Выпадающие списки ===== -->
+            <div class="custom-dropdown" id="company-dropdown">
+                <div class="dropdown-selected" tabindex="0" aria-label="Компания">
+                    <span class="selected-text">Компания</span>
+                    <img class="arrow" src="../img/arrow_down.png" alt="Стрелка" />
+                </div>
+                <ul class="dropdown-list hidden">
+                    <li class="dropdown-item">4 лапы<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Атол<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Авторусь<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Билайн<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Умскул<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Финам<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item add-option">
+                        Добавить компанию
+                        <img src="../img/add_icon.png" alt="Добавить" class="add-icon" />
+                    </li>
+                </ul>
+            </div>
+
+            <div class="select-separator">—</div>
+
+            <div class="custom-dropdown" id="segment-dropdown">
+                <div class="dropdown-selected" tabindex="0" aria-label="Сегмент">
+                    <span class="selected-text">Сегмент</span>
+                    <img class="arrow" src="../img/arrow_down.png" alt="Стрелка" />
+                </div>
+                <ul class="dropdown-list hidden">
+                    <li class="dropdown-item">Школьники<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Учащиеся СПО и студенты<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Работающая молодежь<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Родители школьников<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Пожилые<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item">Госслужщие<img src="../img/delete_icon.png" alt="Удалить" class="delete-icon"></li>
+                    <li class="dropdown-item add-option">
+                        Добавить сегмент
+                        <img src="../img/add_icon.png" alt="Добавить" class="add-icon" />
+                    </li>
+                </ul>
+            </div>
+
+            <div class="icon-buttons">
+                <div class="tooltip">
+                    <img src="../img/export_icon.png" alt="Экспортировать" class="icon-button" />
+                    <span class="tooltip-text">Экспортировать</span>
+                </div>
+
+                <div class="tooltip">
+                    <img src="../img/import_icon.png" alt="Импортировать" class="icon-button" />
+                    <span class="tooltip-text">Импортировать</span>
+                </div>
+
+                
+                <div class="tooltip">
+                    <img src="../img/save_all_icon.png" alt="Сохранить изменения" class="icon-button" />
+                    <span class="tooltip-text">Сохранить изменения</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Грид из 3 блоков -->
+        <section class="criteria-grid">
+
+            <!-- Блок 1 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Рынок</div>
+                <div class="criterion">
+                    <label for="slider1">Бренд</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider1">
+                        <div class="factor-labels"><span>Известный</span><span>Новый</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider2">Доля бренда на рынке</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider2">
+                        <div class="factor-labels"><span>Высокая</span><span>Низкая</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider3">Лояльность к бренду</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider3">
+                        <div class="factor-labels"><span>Высокая</span><span>Низкая</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider4">Цикл покупки</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider4">
+                        <div class="factor-labels"><span>Длинный</span><span>Короткий</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider5">Использование</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider5">
+                        <div class="factor-labels"><span>Редкое</span><span>Частое</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider6">Доля голоса</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider6">
+                        <div class="factor-labels"><span>Высокая</span><span>Низкая</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider7">Аудитория</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider7">
+                        <div class="factor-labels"><span>Простая</span><span>Сложная</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок 2 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Креатив</div>
+                <div class="criterion">
+                    <label for="slider8">Сообщение</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider8">
+                        <div class="factor-labels"><span>Простое</span><span>Сложное</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider9">Сообщение</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider9">
+                        <div class="factor-labels"><span>Уникальное</span><span>Неуникальное</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider10">Сообщение в эфире</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider10">
+                        <div class="factor-labels"><span>уже было</span><span>впервые</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider11">Коммуникация</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider11">
+                        <div class="factor-labels"><span>Продуктовая</span><span>Имиджевая</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider12">Вариации сообщения</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider12">
+                        <div class="factor-labels"><span>Одна</span><span>Много</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider13">Износ сообщения</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider13">
+                        <div class="factor-labels"><span>Высокий</span><span>Низкий</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider14">Реклама</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider14">
+                        <div class="factor-labels"><span>Длинная</span><span>Короткая</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок 3 -->
+            <div class="criteria-block">
+                <div class="criteria-title">Медиа</div>
+                <div class="criterion">
+                    <label for="slider15">Рекламы в медиа</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider15">
+                        <div class="factor-labels"><span>Немного</span><span>Много</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider16">Контент</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider16">
+                        <div class="factor-labels"><span>Подходящий</span><span>Нейтральный</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider17">Аудитория</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider17">
+                        <div class="factor-labels"><span>Внимательна</span><span>Невнимательна</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider18">Размещение</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider18">
+                        <div class="factor-labels"><span>Непрерывное</span><span>С перерывами</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider19">Используется медиа-канал</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider19">
+                        <div class="factor-labels"><span>Один</span><span>Несколько</span></div>
+                    </div>
+                </div>
+                <div class="criterion">
+                    <label for="slider20">Медиа</label>
+                    <div class="slider-container">
+                        <div class="slider-track"><span>-0.2</span><span>-0.1</span><span>0</span><span>0.1</span><span>0.2</span></div>
+                        <input type="range" min="-0.2" max="0.2" value="0" step="0.1" class="slider" id="slider20">
+                        <div class="factor-labels"><span>Высокочастотное</span><span>Низкочастотное </span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==== Частота по Отсроу ==== -->
+        <div class="ostrow-container">
+            <div class="tooltip-ostrow ostrow-wrapper">
+                <input
+                    type="number"
+                    step="0.1"
+                    inputmode="decimal"
+                    class="ostrow-frequency-input"
+                    placeholder="Остроу"
+                    readonly
+                    value="0.0"
+                />
+                <span class="tooltip-text-ostrow">Частота по Остроу</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="https://rta-moscow.com/policy" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    Политика конфиденциальности
+                </a>
+            </div>
+
+            <div class="footer-center">
+                <a href="https://rta-moscow.com/" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    © RTA Москва, 2025
+                </a>
+            </div>
+
+            <div class="footer-right">
+                <a href="https://rta-moscow.com/" target="_blank" rel="noopener noreferrer" class="footer-link">
+                    ООО "ТуБиДу" ОГРН 1117746540108
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- ====== Модальные окна добавления и удаления ====== -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container" id="modal-company" style="display:none;">
+            <h3>Добавить компанию</h3>
+            <input type="text" id="new-company-name" placeholder="Название компании" />
+            <button id="add-company-btn">Добавить компанию</button>
+        </div>
+
+        <div class="modal-container" id="modal-segment" style="display:none;">
+            <h3>Добавить сегмент</h3>
+            <input type="text" id="new-segment-name" placeholder="Название сегмента" />
+            <button id="add-segment-btn">Добавить сегмент</button>
+        </div>
+
+        <!-- ====== Модальное окно подтверждения удаления сегмента / компании ====== -->
+        <div class="modal-container" id="modal-delete" style="display: none;">
+            <h3>Вы действительно хотите удалить?</h3>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <button id="confirm-delete-btn" style="display: flex; align-items: center; width: 110px;">
+                    <span style="margin: 0 10px;">Да</span>
+                    <img src="../img/accept_icon.png" alt="Да" width="40" height="40">
+                </button>
+                <button id="cancel-delete-btn" style="display: flex; align-items: center; width: 110px;">
+                    <span style="margin: 0 10px;">Нет</span>
+                    <img src="../img/cancel_icon.png" alt="Нет" width="40" height="40">
+                </button>
+            </div>
+        </div>
+
+        <!-- Модальное окно импорта -->
+        <div class="modal-container" id="modal-import" style="display: none;">
+            <h3>Импортировать файл</h3>
+            <label class="custom-file-input">
+                <input type="file" id="file-input" accept=".xlsx,.csv,.ods,.xls" style="display: none;" />
+                <span id="file-name">Путь к файлу</span>
+            </label>
+            <!-- Область drag & drop -->
+            <div id="drop-zone">
+                <p>Перетащите файл сюда</p>
+                <img src="../img/drag&drop_icon.png" alt="Drag & Drop" />
+            </div>
+            <button id="import-submit-btn">Импортировать</button>
+        </div>
+        
+    </div>
+
+    <script src="../js/header_enter_pages_script.js"></script>       <!-- Код для обработки перехода между страницами -->
+    <script src="../js/main_select_comp_&_segment.js"></script>      <!-- Код для выпадающих списков выбора компании и сегмента -->
+    <script src="../js/count_ostroy_frequency_script.js"></script>   <!-- Код для автоматического подсчета частоты Остроу -->
+    <script src="../js/round_base_frequency_script.js"></script>     <!-- Код для округления Базовой частоты (добавление десятичной части) -->
+    <script src="../js/logo_animation_control_script.js"></script>   <!-- Код для анимации лого в хэдере -->
+    <script src="../js/main_modal_window_import_script.js"></script>           <!-- Код для импорта файла (модальное окно) -->
+    <script src="../js/main_import_from_file_script.js"></script>           <!-- Код для импорта данных из файла -->
+    <script src="../js/main_export_script.js"></script>           <!-- Код для эксопрта в файл -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> <!-- Библиотека для экспорта в табличный формат -->
+
+    
+</body>
+</html>
