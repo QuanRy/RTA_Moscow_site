@@ -1,0 +1,36 @@
+name: Build and Deploy ASP.NET Core
+
+on:
+  push:
+    branches: [ front_with_backend ]
+  pull_request:
+    branches: [ front_with_backend ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x' 
+
+      - name: Restore dependencies
+        run: dotnet restore FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj
+
+      - name: Build project
+        run: dotnet build FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj --configuration Release --no-restore
+
+      - name: Publish project
+        run: dotnet publish FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj --configuration Release --output ./publish --no-build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.RTA_DEPLOY_GITHUB_TOKEN_CLASSIC }}
+          publish_dir: ./publish/wwwroot
+          publish_branch: github-pages

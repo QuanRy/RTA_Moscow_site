@@ -41,13 +41,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
+
 //  1. Включаем поддержку статических файлов 
 app.UseStaticFiles();
 
-//  2. Редирект с корня сайта "/" на login.html
+//  1. �������� ��������� ����������� ������ 
+app.UseStaticFiles();
+
+//  2. �������� � ����� ����� "/" �� login.html
 app.MapGet("/", context =>
 {
-    context.Response.Redirect("/html/login.html");
+    context.Response.Redirect("/index.html");
     return Task.CompletedTask;
 });
 app.UseHttpsRedirection();
