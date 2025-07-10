@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'  # или '7.0.x', если хочешь
+          dotnet-version: '8.0.x' 
 
       - name: Restore dependencies
         run: dotnet restore FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj
@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          github_token: ${{ secrets.RTA_DEPLOY_GITHUB_TOKEN  }}
           publish_dir: ./publish/wwwroot
           publish_branch: github-pages
