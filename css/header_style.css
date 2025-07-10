@@ -1,0 +1,99 @@
+/* ================== Хэдер ================== */
+header {
+    background: transparent;
+     padding: 0 20px 0 0;
+    border-bottom: none; 
+}
+
+/* Логотип и заголовок оставляем без изменений */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.logo-container video {
+    height: 80px;  
+    cursor: pointer;
+}
+
+.logo-container h1 {
+    color: black;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* лёгкое белое свечение */
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.logo-container h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;  /* расстояние от текста до подчеркивания */
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.logo-container h1:hover {
+    transform: scale(1.1);
+}
+
+.logo-container h1:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Меняем стили для блока с ссылками */
+.auth-buttons {
+    display: flex;
+    gap: 25px;
+}
+
+.auth-link {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.6)); /* легкое белое свечение */
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block; /* чтобы трансформировать корректно */
+}
+
+/* Плавное увеличение текста при наведении */
+.auth-link:hover {
+    transform: scale(1.1);
+    color: black;
+}
+
+/* Подчеркивание из центра */
+.auth-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* При наведении подчеркивание растягивается из центра */
+.auth-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+/* =========================================== */

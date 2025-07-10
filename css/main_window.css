@@ -1,0 +1,735 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    min-height: 100%;
+    margin: 0;
+    /* background-color: #F1F1F1; */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+
+    
+    background-image: url('../img/img_background.jpg');
+    background-repeat: no-repeat;
+    background-size: 110% 150%;
+    background-position: center bottom -432px;
+    background-attachment: fixed; 
+}
+
+.criteria-section {
+    max-width: 600px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.criterion label {
+    font-weight: 600;
+    display: block;
+    color: #100f0d;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.slider-track {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 0 2px;
+    color: #FC3A79;
+    font-weight: 500;
+}
+
+.slider-track span {
+    width: 20px;
+    text-align: center;
+}
+
+.slider {
+    width: 100%;
+    accent-color: #FC3A79;
+    height: 6px;
+    border-radius: 999px;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 0px 10px;
+    margin-top: -10px;
+}
+
+.criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+.criteria-block {
+    background: linear-gradient(rgb(255 255 255 / 81%), rgb(255 255 255 / 85%)), url(../img/blur_background.svg) center / cover no-repeat;
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 35px 31px rgba(0, 0, 0, 0.4);
+}
+
+
+.criteria-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: 'Manrope', sans-serif;
+    color: #100f0d;
+}
+
+
+/* ======== деление критериев ======== */
+.factor-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #e91e63;
+    margin-top: -15px;
+    margin-bottom: 5px;
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 0px auto; 
+}
+
+.ostrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0px auto 40px auto; 
+}
+
+/* Большой дефис между селектами */
+.select-separator {
+    font-size: 40px;
+    font-weight: 700;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    background-clip: text;             
+    -webkit-background-clip: text;    
+    -webkit-text-fill-color: transparent;
+    color: transparent;               
+    user-select: none;
+    line-height: 1;
+    position: relative;
+    top: -7px;
+}
+
+/* ====== НОВЫЙ ВЫПАДАЮБЩИЙ СПИСОК ====== */
+.custom-dropdown {
+  position: relative;
+  width: 220px;
+  font-family: 'Manrope', sans-serif;
+  margin-bottom: 10px;
+}
+
+.dropdown-selected {
+  /* background: linear-gradient(rgb(255 255 255 / 47%), rgb(238 230 247 / 31%)), url(../img/blur_background.svg) center / cover no-repeat; */
+  border: 2px solid #fc3a79;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #999999;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  /* box-shadow: 0 35px 31px rgba(0, 0, 0, 0.04); */
+}
+
+/* Анимация поворота стрелочки при выпадающем списке */
+.dropdown-selected .arrow {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-selected .arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-selected:hover {
+  transform: scale(1.05);
+  border-color: #fc3a79;
+  color: #333;
+  box-shadow: 0 6px 20px rgba(252, 58, 121, 0.3);
+}
+
+.dropdown-list {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #fc3a79;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 4px 0 0 0;
+  padding: 0;
+  list-style: none;
+  z-index: 10;
+}
+
+.dropdown-list.hidden {
+  display: none;
+}
+
+.dropdown-item {
+  padding: 10px 10px;
+  color: #100f0d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Растянуть дочерние элементы по краям */
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #fcecf0;
+}
+
+.add-option {
+  color: #6a0f33;
+  font-weight: bold;
+}
+
+.add-icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.delete-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  visibility: hidden;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-item:hover .delete-icon {
+  visibility: visible;
+}
+
+.add-icon:hover,
+.delete-icon:hover {
+  transform: scale(1.2); 
+}
+
+.selected-text {
+  flex-grow: 1;
+  user-select: none;
+}
+
+/* ================== Модальные окна (всплывающие) ================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-container {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(252, 58, 121, 0.15);
+    font-family: 'Manrope', sans-serif;
+    flex-direction: column;
+}
+
+.modal-container h3 {
+    margin: 0 0 20px;
+    color: #FC3A79;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* расстояние между текстом и delete-target */
+    justify-content: center;
+}
+
+.modal-container input[type="text"] {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #ffe8ef;
+    transition:
+        border-color 0.3s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Наведение и фокус */
+.modal-container input[type="text"]:hover,
+.modal-container input[type="text"]:focus {
+    border-color: #fc3a79;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(252, 58, 121, 0.2);
+    outline: none;
+}
+
+.modal-container button {
+    width: 200px;
+    padding: 12px;
+    background: linear-gradient(to right, #FC3A79, #FE88AD);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    transition:
+        background 0.3s,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-container button:hover {
+    background: linear-gradient(to right, #fe5b93, #fda3bd);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(252, 58, 121, 0.3);
+}
+/* =========================================== */
+
+/* ================== Иконки импорта / экспорта ================== */
+.icon-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    width: 43px;
+    height: 43px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: scale(1.1);
+}
+
+/* Поле кастомного выбора файла */
+.custom-file-input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    background-color: #ffe8ef;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.custom-file-input:hover,
+.custom-file-input:focus-within {
+    border-color: #fc3a79;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(252, 58, 121, 0.2);
+}
+
+.custom-file-input input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+}
+
+.custom-file-input span {
+    line-height: 24px;
+}
+
+/* Drop Zone */
+#drop-zone {
+    height: 120px;
+    background-color: #ffe8ef;
+    border: 2px dashed #fc3a79;
+    border-radius: 24px;
+    text-align: center;
+    padding: 10px;
+    color: #fc3a79;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#drop-zone:hover {
+    border-color: #fe5b93;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(252, 58, 121, 0.2);
+    cursor: pointer;
+}
+
+#drop-zone img {
+    width: 80px;
+    height: 80px;
+    margin-top: -10px;
+}
+/* =========================================== */
+
+/* Запрет на выбор курсором в ползунках текста */
+.criterion label,
+.slider-track,
+.factor-labels {
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+}
+
+/* Всплывающая подсказка при наведении (универсальная) */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background: none;
+    color: #fc3a79;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    padding: 2px 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ===== Сообщение о необходимости ввести Б.ч. ===== */
+.error-message {
+    color: #ff0051;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    font-family: 'Manrope', sans-serif;
+    white-space: normal;
+    user-select: none;
+    max-width: 200px;
+    position: relative;
+    left: 20px;
+    padding-right: 24px; 
+}
+
+.error-message::after {
+    content: "";
+    display: inline-block;
+    width: 66px;
+    height: 42px;
+    background-image: url(../img/arrow_right.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    transform: translateY(-50%);
+    animation: arrow-wiggle 1.5s ease-in-out infinite;
+}
+
+/* Анимация для покачивания стрелки */
+@keyframes arrow-wiggle {
+    0%   { transform: translateY(-50%) translateX(0); }
+    50%  { transform: translateY(-50%) translateX(5px); }
+    100% { transform: translateY(-50%) translateX(0); }
+}
+
+/* ======== БАЗОВАЯ ЧАСТОТА ======== */
+.tooltip-base {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-base .tooltip-text-base {
+    visibility: hidden;
+    opacity: 0;
+    background: #fc3a79;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(252, 58, 121, 0.6);
+}
+
+.tooltip-base:hover .tooltip-text-base {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Сияющая обёртка — мягкий широкоформатный перелив */
+.base-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(270deg, #FC3A79, #FE88AD, #FFA5C9, #FC3A79);
+    background-size: 600% 600%;
+    animation: gradientShift 8s ease infinite;
+    box-shadow:
+        0 0 10px rgba(252, 58, 121, 0.4),
+        0 0 18px rgba(252, 58, 121, 0.5),
+        0 0 30px rgba(252, 58, 121, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.base-wrapper:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 12px rgba(252, 58, 121, 0.5),
+        0 0 22px rgba(254, 136, 173, 0.6),
+        0 0 34px rgba(252, 58, 121, 0.8);
+}
+
+/* Поле ввода — без градиентов и дымки, идеально читаемый текст */
+.base-frequency-input {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ffffff10; /* лёгкая прозрачность вместо градиента */
+    font-family: 'Manrope', sans-serif;
+    font-weight: 1000;
+    font-size: 25px;
+    text-align: center;
+    line-height: 60px;
+    padding: 0;
+    outline: none;
+    appearance: textfield;
+    cursor: text;
+    user-select: all;
+    color: white;
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+    position: relative;
+    backdrop-filter: blur(0); /* убран эффект "дыма" */
+}
+
+.base-frequency-input::placeholder {
+    color: white;
+}
+
+.base-frequency-input:hover,
+.base-frequency-input:focus {
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.6), 0 0 6px rgba(252, 58, 121, 0.5);
+    transform: scale(1.05);
+}
+
+/* Убрать стрелки в числовом поле */
+.base-frequency-input::-webkit-outer-spin-button,
+.base-frequency-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.base-frequency-input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+}
+
+/* Placeholder */
+.base-frequency-input::placeholder {
+    color: white;
+    font-weight: 600;
+    opacity: 0.6;
+    line-height: 60px;
+}
+
+/* Анимация градиента */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* =========================================== */
+
+
+
+/* ========  частота по Остроу  ======== */
+.tooltip-ostrow {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-ostrow .tooltip-text-ostrow {
+    visibility: hidden;
+    opacity: 0;
+    background: #fc3a79;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(252, 58, 121, 0.6);
+}
+
+.tooltip-ostrow:hover .tooltip-text-ostrow {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Сияющая обёртка */
+.ostrow-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #FC3A79, #FE88AD, #FC3A79);
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+    box-shadow:
+        0 0 12px #FC3A79,
+        0 0 20px #FE88AD,
+        0 0 30px rgba(252, 58, 121, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.ostrow-wrapper:hover {
+    transform: scale(1.08);
+}
+
+/* Поле ввода */
+.ostrow-frequency-input {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff0f6;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 1000;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    padding: 0;
+    outline: none;
+    appearance: textfield;
+    cursor: text;
+    user-select: all;
+
+    /* Переливающийся текст */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    /* background-image: linear-gradient(to right, #FC3A79, #FE88AD, #FC3A79); */
+    background-size: 200% auto;
+    animation: textGradientMove 3s linear infinite;
+}
+
+/* Убрать стрелки */
+.ostrow-frequency-input::-webkit-outer-spin-button,
+.ostrow-frequency-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ostrow-frequency-input[type=number] {
+    appearance: textfield;          
+    -moz-appearance: textfield;    
+    -webkit-appearance: none;       
+}
+
+.ostrow-frequency-input::placeholder {
+    color: #f8f8f8;
+    font-weight: 600;
+    opacity: 0.6;
+    line-height: 60px;
+}
+
+/* Анимации */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes textGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
