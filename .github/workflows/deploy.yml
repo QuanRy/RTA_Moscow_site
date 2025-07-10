@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.RTA_DEPLOY_GITHUB_TOKEN  }}
+          github_token: ${{ secrets.RTA_DEPLOY_GITHUB_TOKEN_CLASSIC }}
           publish_dir: ./publish/wwwroot
           publish_branch: github-pages
