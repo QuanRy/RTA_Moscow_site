@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: Build and Deploy ASP.NET Core
+=======
+name: Simple CI/CD
+>>>>>>> 3fb6e956f27dc1b9ea0d2e7214e54c321d7957a4
 
 on:
   push:
@@ -6,6 +10,7 @@ on:
   pull_request:
     branches: [ front_with_backend ]
 
+<<<<<<< HEAD
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -33,4 +38,34 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./publish/wwwroot/html
+=======
+permissions:
+  id-token: write
+  contents: write
+  actions: write
+  checks: write
+  deployments: write
+  discussions: write
+  issues: write
+  pages: write
+  packages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy static HTML
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: FrequencyVisualizationWebAPI/wwwroot/html
+>>>>>>> 3fb6e956f27dc1b9ea0d2e7214e54c321d7957a4
           publish_branch: github-pages
