@@ -11,7 +11,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class CompanyController : ControllerBase
     {
         private ICompanyService CompanyService { get; set; }
@@ -74,7 +74,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteCompany(Guid id)
         {
             try

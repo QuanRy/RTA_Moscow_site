@@ -41,6 +41,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
+
+//  1. Включаем поддержку статических файлов 
+app.UseStaticFiles();
+
 //  1. �������� ��������� ����������� ������ 
 app.UseStaticFiles();
 
@@ -50,7 +54,6 @@ app.MapGet("/", context =>
     context.Response.Redirect("/index.html");
     return Task.CompletedTask;
 });
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

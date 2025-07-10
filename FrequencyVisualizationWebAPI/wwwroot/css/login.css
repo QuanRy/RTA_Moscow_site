@@ -107,7 +107,6 @@
     display: none;
 }
 
-
 /* ============== Анимация логотипа и штор, при первой загрузке страницы ============== */
 #intro-overlay {
     position: fixed;
@@ -117,6 +116,11 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    /* padding: 10px; */
+    box-sizing: border-box;
+    /* background-color: #ffffff; */
+
     box-sizing: border-box;
 }
 
