@@ -1,4 +1,4 @@
-name: Simple CI/CD
+name: Build and Deploy ASP.NET Core
 
 on:
   push:
@@ -6,32 +6,31 @@ on:
   pull_request:
     branches: [ front_with_backend ]
 
-permissions:
-  id-token: write
-  contents: write
-  actions: write
-  checks: write
-  deployments: write
-  discussions: write
-  issues: write
-  pages: write
-  packages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy static HTML
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'  
+
+      - name: Restore dependencies
+        run: dotnet restore FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj
+
+      - name: Build project
+        run: dotnet build FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj --configuration Release --no-restore
+
+      - name: Publish project
+        run: dotnet publish FrequencyVisualizationWebAPI/FrequencyVisualizationWebAPI.csproj --configuration Release --output ./publish --no-build
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: FrequencyVisualizationWebAPI/wwwroot/html
+          publish_dir: ./publish/wwwroot/html
           publish_branch: github-pages
