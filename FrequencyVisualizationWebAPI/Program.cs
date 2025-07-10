@@ -47,7 +47,7 @@ app.UseStaticFiles();
 //  2. �������� � ����� ����� "/" �� login.html
 app.MapGet("/", context =>
 {
-    context.Response.Redirect("/html/index.html");
+    context.Response.Redirect("/index.html");
     return Task.CompletedTask;
 });
 
