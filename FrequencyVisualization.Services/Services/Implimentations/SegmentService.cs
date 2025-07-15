@@ -27,28 +27,30 @@ namespace FrequencyVisualization.Services
         {
             var segment = new Segment();
             segment.Name = nameSegment;
-            segment.CompanyItem = CompanyService.GetCompanyById(companyId);
 
-            _repository.Create(segment);
+            //_repository.Create(segment);
+
+            //segment.CompanyItem = CompanyService.GetCompanyById(companyId);
+
+            var company = CompanyService.GetCompanyById(companyId);
 
             segment.FactorValues = _factorValueService.CreateDefaultValues(segment);
 
-            segment.CompanyItem.Segments.Add(segment);
-            CompanyService.SaveCompany(segment.CompanyItem);
+            company.Segments.Add(segment);
+            CompanyService.SaveCompany(company);
             return segment;
         }
 
         public void DeleteSegment(Segment segment)
         {
-            _repository.Delete(segment);
-
-            foreach (var item in segment.FactorValues)
-            {
-                _factorValueService.DeleteFactorValue(item);
-            }
-
             if (segment != null)
+            {
+                foreach (var item in segment.FactorValues)
+                {
+                    _factorValueService.DeleteFactorValue(item);
+                }
                 _repository.Delete(segment);
+            }
         }
 
         public void DeleteSegmentById(Guid Id)

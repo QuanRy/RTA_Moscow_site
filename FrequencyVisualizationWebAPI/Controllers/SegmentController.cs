@@ -13,7 +13,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
     public class SegmentController : ControllerBase
     {
         private ISegmentService SegmentService { get; set; }
-        private ICompanyService CompanyService {  get; set; }
+        private ICompanyService CompanyService { get; set; }
 
         public SegmentController(ISegmentService segmentService, ICompanyService companyService)
         {
@@ -34,7 +34,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteSegment(Guid id)
         {
             try

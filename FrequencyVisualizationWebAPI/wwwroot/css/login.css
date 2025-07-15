@@ -116,9 +116,12 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
     /* padding: 10px; */
     box-sizing: border-box;
     /* background-color: #ffffff; */
+
+    box-sizing: border-box;
 }
 
 #intro-video.fade-out {
@@ -136,7 +139,6 @@
     object-fit: contain; 
     z-index: 9999;
     position: relative;
-    /* border-radius: 8px;  */
 }
 
 /* Шторы поверх видео — сначала прозрачные */

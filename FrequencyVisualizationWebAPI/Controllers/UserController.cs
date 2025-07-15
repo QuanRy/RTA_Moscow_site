@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using FrequencyVisualization.ObjectModel.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FrequencyVisualizationWebAPI.Controllers
@@ -24,14 +25,20 @@ namespace FrequencyVisualizationWebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult Login(string login, string password)
+        public ActionResult<UserViewModel> Login(string login, string password)
         {
             var user = UserService.GetUserByLoginAndPassword(login, password);
             if (user == null)
             {
                 return Unauthorized();
             }
-            return Ok(GenerateToken(login));
+            var token = GenerateToken(login);
+            UserViewModel userViewModel = new UserViewModel
+            {
+                Id = user.Id,
+                TokenUser = token,
+            };
+            return userViewModel;
         }
 
         [HttpPost]
