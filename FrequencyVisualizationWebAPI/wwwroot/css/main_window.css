@@ -247,6 +247,7 @@ body {
   user-select: none;
 }
 
+
 /* ================== Модальные окна (всплывающие) ================== */
 .modal-overlay {
     position: fixed;

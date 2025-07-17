@@ -135,7 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
     return true;
   }
 
-  // ДОБАВЛЕНИЕ НОВОЙ КОМПАНИИ
+  // ДОБАВЛЕНИЕ НОВОЙ КОМПАНИИ в БД
+  // =========================================================================================================
   document.getElementById('add-company-btn').addEventListener('click', async () => {
     const input = document.getElementById('new-company-name');
     const newCompany = input.value.trim();
@@ -175,8 +176,10 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Не удалось добавить компанию. Проверьте соединение с сервером.');
     }
   });
+// =========================================================================================================
 
-
+  // ДОБАВЛЕНИЕ НОВОГО СЕГМЕНТА в БД
+  // =========================================================================================================
   document.getElementById('add-segment-btn').addEventListener('click', () => {
     const input = document.getElementById('new-segment-name');
     const newSegment = input.value.trim();
@@ -191,7 +194,9 @@ document.addEventListener('DOMContentLoaded', function () {
       input.value = '';
     }
   });
+  // =========================================================================================================
 
+  
   document.getElementById('modal-overlay').addEventListener('click', (e) => {
     if (e.target.id === 'modal-overlay') {
       closeModals();

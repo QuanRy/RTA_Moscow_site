@@ -10,7 +10,9 @@
     <link rel="icon" type="image/svg+xml" href="../img/logo_without_text.svg">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo-container">
@@ -19,7 +21,21 @@
             </div>
             <div class="auth-buttons">
                 <a href="#" class="auth-link registration">Регистрация</a>
-                <a href="#" class="auth-link login">Войти</a>
+                
+                <!-- Кнопка Пользователь с выпадающим меню -->
+                <div class="auth-link login user-dropdown custom-dropdown" id="user-dropdown">
+                    <div class="dropdown-user" tabindex="0" aria-label="Пользователь">
+                        <img class="user-icon" src="../img/save_all_icon.png" alt="Иконка пользователя" />
+                        <span class="selected-text">Пользователь</span>
+                    </div>
+                    <ul class="dropdown-list hidden">
+                        <li class="dropdown-item logout-item">
+                            Выйти
+                            <img src="../img/cancel_icon.png" alt="Выйти" class="delete-icon" />
+                        </li>
+                    </ul>
+                </div>
+                
             </div>
         </div>
     </header>
@@ -109,6 +125,7 @@
     </footer>
     
     <script src="../js/header_enter_pages_script.js"></script>
+    <script src="../js/header_user_dropbox_script.js"></script>
     <script src="../js/error_registration_POST_script.js"></script>
     <script src="../js/error_registration_script.js"></script>
     <script src="../js/logo_animation_control_script.js"></script>

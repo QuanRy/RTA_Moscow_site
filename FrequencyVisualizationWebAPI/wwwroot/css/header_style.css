@@ -55,10 +55,11 @@ header {
     left: 0;
 }
 
-/* Меняем стили для блока с ссылками */
+
 .auth-buttons {
-    display: flex;
+    display: inline-flex;
     gap: 25px;
+    align-items: center;
 }
 
 .auth-link {
@@ -96,4 +97,110 @@ header {
     width: 100%;
     left: 0;
 }
+
+
+
+
+/* ================== Для контейнера пользователя с выпадающим меню ================== */
+.user-dropdown {
+  width: 180px;
+  position: relative;
+  margin-left: 10px;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Кнопка "Пользователь" */
+.user-dropdown .dropdown-user {
+  background-color: #f2f2f2; /* светло-серый фон */
+  border: 2px solid #ccc; /* серая обводка */
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* justify-content: space-between; */
+  user-select: none;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.user-dropdown .dropdown-user:hover {
+  transform: scale(1.05);
+  border-color: #aaa;
+  color: #333;
+  box-shadow: 0 6px 20px rgba(150, 150, 150, 0.3);
+}
+
+/* Иконка пользователя */
+.user-dropdown .user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Стрелка */
+.user-dropdown .arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.user-dropdown .arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* Выпадающий список */
+.user-dropdown .dropdown-list {
+  background-color: #f9f9f9; /* светло-серый фон */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  max-height: 100px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.user-dropdown .dropdown-list.hidden {
+  display: none;
+}
+
+/* Пункт списка */
+.user-dropdown .dropdown-item {
+  padding: 10px 16px;
+  color: #100f0d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background-color: #ececec;
+}
+
+/* Иконка выхода */
+.user-dropdown .delete-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+/* ================================================================== */
+
 /* =========================================== */
