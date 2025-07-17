@@ -16,7 +16,12 @@ function sendLoginData() {
     .then(data => {
         console.log("Успешный вход:", data);
         alert("Добро пожаловать!");
-        // Здесь можно сохранить токен или выполнить редирект
+
+        // Сохраняем токен и userId в localStorage
+        localStorage.setItem("token", "Bearer " + data.tokenUser);
+        localStorage.setItem("userId", data.id);
+        
+        // Здесь можно выполнить редирект
     })
     .catch(error => {
         console.error("Ошибка авторизации:", error);

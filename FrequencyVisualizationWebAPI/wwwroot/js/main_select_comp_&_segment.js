@@ -135,7 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
     return true;
   }
 
-  document.getElementById('add-company-btn').addEventListener('click', () => {
+  // ДОБАВЛЕНИЕ НОВОЙ КОМПАНИИ
+  document.getElementById('add-company-btn').addEventListener('click', async () => {
     const input = document.getElementById('new-company-name');
     const newCompany = input.value.trim();
 
@@ -144,11 +145,37 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    if (addNewItem('company-dropdown', 'modal-company', newCompany, 'Компания')) {
-      closeModals();
-      input.value = '';
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+
+    if (!token || !userId) {
+      alert('Вы не авторизованы. Пожалуйста, войдите в систему.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://localhost:5167/company?nameCompany=${encodeURIComponent(newCompany)}&UserId=${userId}`, {
+        method: 'POST', 
+        headers: {
+          'Authorization': token
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Ошибка добавления компании в базу данных');
+      }
+
+      const success = addNewItem('company-dropdown', 'modal-company', newCompany, 'Компания');
+      if (success) {
+        closeModals();
+        input.value = '';
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Не удалось добавить компанию. Проверьте соединение с сервером.');
     }
   });
+
 
   document.getElementById('add-segment-btn').addEventListener('click', () => {
     const input = document.getElementById('new-segment-name');
