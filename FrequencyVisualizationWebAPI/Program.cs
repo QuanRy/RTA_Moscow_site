@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; // разрешим проблему с серриализацией
 
 
 var builder = WebApplication.CreateBuilder(args);

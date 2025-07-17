@@ -43,6 +43,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
 
         [HttpPost]
         // [Authorize]
+        [AllowAnonymous]  // разрешим неавторизованным пользователям (после запуска - разрешить)
         public ActionResult<User> CreateUser(string fio, string login, string password, string role)
         {
             try

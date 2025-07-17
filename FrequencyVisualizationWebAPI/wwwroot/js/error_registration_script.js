@@ -175,20 +175,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // === Общая проверка перед отправкой формы ===
     document.getElementById("registration-form").addEventListener("submit", function(event) {
+        event.preventDefault();  // Чтобы форма не отправлялась по умолчанию
+
         // Поля, обязательные для проверки
         const requiredFields = ["fullname", "login_email", "password"];
         let hasError = false;
 
         requiredFields.forEach(id => {
             const field = document.getElementById(id);
-            // Проверяем, что поле не пустое
             if (!field.value.trim()) {
                 field.classList.add("input-error");
                 hasError = true;
             }
         });
 
-        // Проверяем, есть ли ошибки у этих полей (наличие класса input-error)
         requiredFields.forEach(id => {
             const field = document.getElementById(id);
             if (field.classList.contains("input-error")) {
@@ -196,14 +196,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Проверяем ошибки в Telegram (если заполнено)
         if (telegramInput.value.trim() !== "" && telegramInput.classList.contains("input-error")) {
             hasError = true;
         }
 
         if (hasError) {
-            event.preventDefault();
             alert("Пожалуйста, корректно заполните все обязательные поля!");
+            return;  // Ошибки есть — дальше не идём
+        }
+
+        // Если ошибок нет — вызываем функцию из другого скрипта, который отправит POST-запрос
+        if (typeof sendRegistrationData === "function") {
+            sendRegistrationData();  // функция из error_registration_POST_script.js
+        } else {
+            console.error("Функция отправки данных sendRegistrationData не найдена");
         }
     });
 });
