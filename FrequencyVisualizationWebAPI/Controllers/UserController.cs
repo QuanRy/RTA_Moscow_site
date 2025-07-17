@@ -25,6 +25,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]  // разрешим неавторизованным пользователям (после запуска - разрешить)
         public ActionResult<UserViewModel> Login(string login, string password)
         {
             var user = UserService.GetUserByLoginAndPassword(login, password);

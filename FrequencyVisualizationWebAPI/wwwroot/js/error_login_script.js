@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // === Общая проверка перед отправкой формы ===
     document.getElementById("registration-form").addEventListener("submit", function(event) {
+        event.preventDefault();  // Чтобы форма не отправлялась по умолчанию
+
         // Поля, обязательные для проверки
         const requiredFields = ["login_email", "password"];
         let hasError = false;
@@ -96,6 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hasError) {
             event.preventDefault();
             alert("Пожалуйста, перепроверьте данные!");
+        }
+        
+        // Если ошибок нет — вызываем функцию из другого скрипта, который отправит POST-запрос
+        if (typeof sendLoginData === "function") {
+            sendLoginData();  // функция из error_login_POST_script.js
+        } else {
+            console.error("Функция отправки данных sendLoginData не найдена");
         }
     });
 });
