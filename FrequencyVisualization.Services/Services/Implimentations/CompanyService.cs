@@ -1,4 +1,4 @@
-﻿using FrequencyVisualization.Dal;
+using FrequencyVisualization.Dal;
 using FrequencyVisualization.ObjectModel;
 using FrequencyVisualization.ObjectModel.ViewModel;
 
