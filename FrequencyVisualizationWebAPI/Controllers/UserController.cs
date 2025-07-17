@@ -42,7 +42,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        // [Authorize]
         public ActionResult<User> CreateUser(string fio, string login, string password, string role)
         {
             try
@@ -51,7 +51,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(new { error = ex.Message });  // Возвращаем только текст ошибки
             }
         }
 

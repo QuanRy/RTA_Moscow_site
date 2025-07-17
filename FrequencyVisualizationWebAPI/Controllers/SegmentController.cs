@@ -9,7 +9,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    // [Authorize]
     public class SegmentController : ControllerBase
     {
         private ISegmentService SegmentService { get; set; }
@@ -30,7 +30,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(new { error = ex.Message });  // Выдает лишь сообщение об ошибке
             }
         }
 
@@ -44,7 +44,7 @@ namespace FrequencyVisualizationWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(new { error = ex.Message });  // Выдает лишь сообщение об ошибке
             }
         }
     }
