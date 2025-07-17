@@ -10,6 +10,6 @@
 
         public List<FactorValue> FactorValues { get; set; }
 
-        //public Company CompanyItem { get; set; }
+        // public CompanyItemId { get; set; }
     }
 }
